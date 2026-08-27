@@ -10,6 +10,10 @@ import { products } from "@/constant/content";
 import ProspectIndustries from "./prospect-industries";
 import FAQ from "./faq";
 import Footer from "./footer";
+import PadlockContent from "./padlock/padlock-content";
+import BreathAnalyzerContent from "./breath-analyzer/breath-analyzer-content";
+import ObdContent from "./obd/obd-content";
+import RadialProductSelector from "./radial-product-selector";
 
 export default function HomeLayout() {
   const [mainProduct, setMainProduct] = useState(products[0]);
@@ -66,8 +70,16 @@ export default function HomeLayout() {
 
   return (
     <>
+      {/* Fixed Radial Product Fan-Out Selector (Accessible on every section on top right) */}
+      <RadialProductSelector
+        mainProduct={mainProduct}
+        setMainProduct={setMainProduct}
+        setLeftProducts={setLeftProducts}
+        setRightProducts={setRightProducts}
+      />
+
       <div>
-        <main className="h-[calc(100vh+345px)] w-full overflow-x-hidden relative flex flex-col">
+        <main className="h-[calc(100vh+800px)] w-full overflow-x-hidden relative flex flex-col">
           <BackgroundRippleEffect />
           <Navbar />
           <Products
@@ -84,6 +96,10 @@ export default function HomeLayout() {
       <div className="relative z-20">
         {mainProduct.name === "E-lock" && <ElockContent />}
         {mainProduct.name === "Adas (DMS)" && <DashcamContent />}
+        {mainProduct.name === "Padlock" && <PadlockContent />}
+        {mainProduct.name === "OBD" && <ObdContent />}
+        {(mainProduct.name === "Breath Analyze" ||
+          mainProduct.name === "Breath Analyzer") && <BreathAnalyzerContent />}
         <FAQ />
         <ProspectIndustries />
         <Footer />

@@ -163,8 +163,8 @@ const FeatureCarousel = ({ features, activeIndex }: FeatureCarouselProps) => (
             isActive
               ? "w-[65vh] h-[35vh] opacity-100 z-20"
               : isVisible
-              ? "w-[55vh] h-[30vh] opacity-40 z-10"
-              : "w-[50vh] h-[28vh] opacity-0 z-0"
+                ? "w-[55vh] h-[30vh] opacity-40 z-10"
+                : "w-[50vh] h-[28vh] opacity-0 z-0"
           }`}
           style={{
             left: `calc(55% + ${posX}vh)`,
@@ -297,7 +297,7 @@ const SafetyFeatures = () => {
 
       const progress = Math.min(
         Math.max(scrolled / totalScrollableHeight, 0),
-        1
+        1,
       );
       setScrollProgress(progress);
     };

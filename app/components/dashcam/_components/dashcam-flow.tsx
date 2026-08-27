@@ -62,6 +62,22 @@ const DashcamFlow = () => {
     <div className="bg-white min-h-screen py-24 px-6 md:px-20 relative">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
         <div className="w-full lg:w-[48%] lg:sticky lg:top-[15vh] flex flex-col justify-between h-[70vh] gap-8">
+          <div className="flex flex-col space-y-5 text-left">
+            <h1
+              className={`${goldmam.className} text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
+            >
+              Container Security <br /> Workflow
+            </h1>
+            <p
+              className={`${poppins.className} max-w-lg text-zinc-500 text-sm leading-relaxed`}
+            >
+              From secure locking to authorized unlocking, every step is
+              monitored, tracked, and recorded to ensure complete cargo security
+              throughout the journey.
+            </p>
+          </div>
+
+          {/* Sticky Video/GIF Display (Below) */}
           <div className="relative w-full h-[42vh] p-1.5 flex items-center justify-center">
             <FrameCorners />
 
@@ -102,22 +118,6 @@ const DashcamFlow = () => {
                 );
               })}
             </div>
-          </div>
-
-          {/* Fixed Section Header */}
-          <div className="flex flex-col space-y-5 text-left">
-            <h1
-              className={`${goldmam.className} text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
-            >
-              Container Security <br /> Workflow
-            </h1>
-            <p
-              className={`${poppins.className} max-w-lg text-zinc-500 text-sm leading-relaxed`}
-            >
-              From secure locking to authorized unlocking, every step is
-              monitored, tracked, and recorded to ensure complete cargo security
-              throughout the journey.
-            </p>
           </div>
         </div>
 

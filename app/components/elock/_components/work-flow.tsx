@@ -53,79 +53,107 @@ const WorkflowCard = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, [hasOpened]);
 
+  // Card Content Component
+  const cardElement = (
+    <div className="relative w-full md:w-[46%] bg-[#0A0A0E] border border-white/50 p-6 flex flex-col justify-between shadow-xl transition-all duration-300">
+      <div
+        className="absolute bg-white/50 pointer-events-none"
+        style={{
+          left: "44px",
+          top: "64px",
+          bottom: "34px",
+          width: "1px",
+        }}
+      />
+      <div
+        className="absolute bg-white/50 pointer-events-none"
+        style={{
+          left: "44px",
+          bottom: "34px",
+          width: "24px",
+          height: "1px",
+        }}
+      />
+
+      <div className="flex items-center text-white text-xl space-x-4 z-10 h-10 shrink-0">
+        <div className="w-10 h-10 border border-white/50 bg-[#1C1C24] flex items-center justify-center shrink-0">
+          <span className="font-light text-sm tracking-wider text-neutral-300">
+            {numStr}
+          </span>
+        </div>
+      </div>
+
+      <div className="w-full h-px bg-white/50 mt-4 mb-3 shrink-0" />
+
+      <div
+        style={{ height: `${openProgress * 300}px`, opacity: openProgress }}
+        className="relative overflow-hidden flex justify-center items-center shrink-0 transition-all duration-100 ease-out"
+      >
+        {step.videoPath && (
+          <img
+            src={step.videoPath}
+            alt={step.title}
+            className="max-h-full max-w-full object-contain"
+            draggable={false}
+          />
+        )}
+      </div>
+
+      <div
+        style={{
+          height: openProgress > 0.05 ? "1px" : "0px",
+          opacity: openProgress,
+        }}
+        className="w-full bg-white/50 mt-3 mb-4 shrink-0 transition-all"
+      />
+
+      <div className="pl-16 z-10 grow flex items-center text-left">
+        <p className="text-[14px] text-neutral-400 leading-relaxed">
+          {step.description.includes("Secure Access :") ? (
+            <>
+              {step.description.split("Secure Access :")[0]}
+              <span className="block">
+                Secure Access :{step.description.split("Secure Access :")[1]}
+              </span>
+            </>
+          ) : (
+            step.description
+          )}
+        </p>
+      </div>
+    </div>
+  );
+
+  const titleElement = (
+    <div
+      className={`w-full md:w-[46%] hidden md:flex flex-col ${
+        isLeft ? "items-start pl-10 text-left" : "items-end pr-10 text-right"
+      } z-10`}
+    >
+      <h2
+        className={`${goldman.className} text-2xl lg:text-4xl font-bold text-white tracking-wide leading-tight max-w-md`}
+      >
+        {step.title}
+      </h2>
+    </div>
+  );
+
   return (
     <div
       ref={containerRef}
-      className={`flex w-full ${isLeft ? "justify-start" : "justify-end"} relative`}
+      className="flex w-full items-center justify-between relative"
     >
-      <div className="relative w-[45%] bg-[#0A0A0E] border border-white/50 p-6 flex flex-col justify-between shadow-xl transition-all duration-300">
-        <div
-          className="absolute bg-white/50 pointer-events-none"
-          style={{
-            left: "44px",
-            top: "64px",
-            bottom: "34px",
-            width: "1px",
-          }}
-        />
-        <div
-          className="absolute bg-white/50 pointer-events-none"
-          style={{
-            left: "44px",
-            bottom: "34px",
-            width: "24px",
-            height: "1px",
-          }}
-        />
-
-        <div className="flex items-center text-white text-xl space-x-4 z-10 h-10 shrink-0">
-          <div className="w-10 h-10 border border-white/50 bg-[#1C1C24] flex items-center justify-center shrink-0">
-            <span className="font-light text-sm tracking-wider text-neutral-300">
-              {numStr}
-            </span>
-          </div>
-          <h3 className="text-lg font-medium text-neutral-100">{step.title}</h3>
-        </div>
-
-        <div className="w-full h-px bg-white/50 mt-4 mb-3 shrink-0" />
-
-        <div
-          style={{ height: `${openProgress * 300}px`, opacity: openProgress }}
-          className="relative overflow-hidden flex justify-center items-center shrink-0 transition-all duration-100 ease-out"
-        >
-          {step.videoPath && (
-            <img
-              src={step.videoPath}
-              alt={step.title}
-              className="max-h-full max-w-full object-contain"
-              draggable={false}
-            />
-          )}
-        </div>
-
-        <div
-          style={{
-            height: openProgress > 0.05 ? "1px" : "0px",
-            opacity: openProgress,
-          }}
-          className="w-full bg-white/50 mt-3 mb-4 shrink-0 transition-all"
-        />
-
-        <div className="pl-16 z-10 grow flex items-center text-left">
-          <p className="text-[14px] text-neutral-400 leading-relaxed">
-            {step.description.includes("Secure Access :") ? (
-              <>
-                {step.description.split("Secure Access :")[0]}
-                <span className="block">
-                  Secure Access :{step.description.split("Secure Access :")[1]}
-                </span>
-              </>
-            ) : (
-              step.description
-            )}
-          </p>
-        </div>
-      </div>
+      {isLeft ? (
+        <>
+          {cardElement}
+          {titleElement}
+        </>
+      ) : (
+        <>
+          {titleElement}
+          {cardElement}
+        </>
+      )}
     </div>
   );
 };

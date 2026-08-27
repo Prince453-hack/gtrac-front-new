@@ -121,33 +121,33 @@ export const ContainerContent = [
 
 export const DashcamContent = [
   {
-    title: "Install the AI Dashcam",
+    title: "Professional Installation & Setup",
     description:
-      "Professional Installation & 4G Activation. Our experts professionally install the front-facing and cabin cameras, securely connect the system to the vehicle's power supply, and activate the built-in 4G connectivity.",
+      "Certified technicians mount the dual-lens AI dashcam to the windshield, conceal wiring, and connect directly to vehicle power with instant 4G activation.",
     videoPath: "/dashcam/video/first.gif",
   },
   {
-    title: "Install the AI Dashcam",
+    title: "Driver Monitoring System (DMS)",
     description:
-      "Professional Installation & 4G Activation. Our experts professionally install the front-facing and cabin cameras, securely connect the system to the vehicle's power supply, and activate the built-in 4G connectivity.",
+      "The in-cabin AI camera tracks facial landmarks and eye movements in real time to detect driver fatigue, phone distraction, and drowsiness with instant alerts.",
     videoPath: "/dashcam/video/second.gif",
   },
   {
-    title: "Install the AI Dashcam",
+    title: "Advanced Driver Assistance (ADAS)",
     description:
-      "Professional Installation & 4G Activation. Our experts professionally install the front-facing and cabin cameras, securely connect the system to the vehicle's power supply, and activate the built-in 4G connectivity.",
+      "Forward-facing computer vision monitors the road ahead, tracking lane markings, vehicle distance, and issuing Forward Collision Warnings to prevent accidents.",
     videoPath: "/dashcam/video/third.gif",
   },
   {
-    title: "Install the AI Dashcam",
+    title: "Smart Incident Event Detection",
     description:
-      "Professional Installation & 4G Activation. Our experts professionally install the front-facing and cabin cameras, securely connect the system to the vehicle's power supply, and activate the built-in 4G connectivity.",
+      "When risky driving or distraction occurs, the system automatically tags and locks a 1080p video clip stamped with GPS coordinates, live speed, and time.",
     videoPath: "/dashcam/video/forth.mp4",
   },
   {
-    title: "Install the AI Dashcam",
+    title: "Instant 4G Cloud Telematics Sync",
     description:
-      "Professional Installation & 4G Activation. Our experts professionally install the front-facing and cabin cameras, securely connect the system to the vehicle's power supply, and activate the built-in 4G connectivity.",
+      "Incident video evidence and telemetry are automatically transmitted over 4G to the fleet cloud platform for immediate review, coaching, and compliance.",
     videoPath: "/dashcam/video/fifth.gif",
   },
 ];

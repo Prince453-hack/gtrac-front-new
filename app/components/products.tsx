@@ -51,14 +51,7 @@ const Products = ({
       window.removeEventListener("scroll", handleScroll, { capture: true });
   }, []);
 
-  const progress = Math.min(scrollY / 345, 1);
-  const overflowY = Math.max(scrollY - 345, 0);
-  const titleFontSize =
-    mainProduct.name.length > 12
-      ? "text-[6vw]"
-      : mainProduct.name.length > 8
-        ? "text-[8vw]"
-        : "text-[10vw]";
+  const progress = Math.min(scrollY / 380, 1);
 
   const handleLeftSwap = (index: number) => {
     const prevMain = mainProduct;
@@ -83,33 +76,25 @@ const Products = ({
   };
 
   return (
-    <div className="z-10 w-full flex-1 flex flex-col items-center mt-14">
-      <div className="text-center mb-14 z-10">
-        <p
-          className={`${poppins.className} bg-linear-to-r from-[#D9E4EC] to-[#D8D5D4] py-2 px-6 rounded-full text-base md:text-lg font-medium tracking-[0.2em] text-neutral-600 uppercase`}
-        >
-          {mainProduct.description}
-        </p>
-      </div>
-
+    <div className="z-10 w-full flex-1 flex flex-col items-center">
+      {/* Title ABOVE the image on the first page */}
       <div
-        className="relative w-full max-w-5xl flex items-center justify-center min-h-112.5"
+        className="fixed top-24 sm:top-30 left-1/2 z-10 w-full text-center pointer-events-none px-4"
         style={{
-          width: mainProduct.titleWidth || undefined,
-          height: mainProduct.titleHeight || undefined,
+          opacity: Math.max(1 - progress * 2.2, 0),
+          transform: `translate(-50%, -${progress * 25}px)`,
         }}
       >
-        <div className="absolute inset-0 flex items-center justify-center select-none pointer-events-none z-0 overflow-hidden -translate-y-52">
-          <h2
-            className={`${goldman.className} ${titleFontSize} font-medium tracking-widest text-white/60 uppercase whitespace-nowrap`}
-          >
-            {mainProduct.name}
-          </h2>
-        </div>
+        <h1
+          className={`${goldman.className} text-4xl sm:text-6xl md:text-[7rem] font-semibold tracking-widest text-white/60 uppercase whitespace-nowrap`}
+        >
+          {mainProduct.name}
+        </h1>
       </div>
 
+      {/* Central Product Image */}
       <div
-        className="fixed top-[48%] left-1/2 z-10 w-full flex justify-center pointer-events-none"
+        className="fixed top-[46%] left-1/2 z-10 w-full flex justify-center pointer-events-none"
         style={{
           transform: `translate(calc(-50% - ${progress * 24}vw), -40%) scale(${1 + progress * 0.2})`,
         }}
@@ -158,6 +143,22 @@ const Products = ({
         </div>
       </div>
 
+      {/* Subtitle BELOW the image on the first page */}
+      <div
+        className="fixed bottom-48 left-1/2 z-10 text-center pointer-events-none max-w-l px-1"
+        style={{
+          opacity: Math.max(1 - progress * 2.2, 0),
+          transform: `translate(-50%, ${progress * 25}px)`,
+        }}
+      >
+        <p
+          className={`${poppins.className} bg-linear-to-r text-[10px] text-white backdrop-blur-3xl border border-gray-500 bg-white/15 py-2 px-6 rounded-full font-medium tracking-[0.2em] uppercase`}
+        >
+          {mainProduct.description}
+        </p>
+      </div>
+
+      {/* Product Details Section (Slides in on scroll) */}
       <div
         className="fixed top-[50%] left-[55%] -translate-y-1/2 z-10 w-[38vw] max-w-xl flex flex-col text-left pointer-events-none"
         style={{
@@ -199,6 +200,7 @@ const Products = ({
         </div>
       </div>
 
+      {/* Bottom Carousel */}
       <div className="fixed bottom-0 left-0 right-0 z-10 flex items-center justify-between w-full max-w-full overflow-hidden pointer-events-none pb-1">
         <div
           className="h-44 w-[45%] border border-white/80 inset-shadow-sm backdrop-blur-md rounded-tr-[4rem] pointer-events-auto flex items-center justify-around px-8 shadow-lg"
