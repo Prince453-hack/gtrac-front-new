@@ -18,7 +18,7 @@ const poppins = Poppins({
 
 const liveAlerts = [
   {
-    label: "freewheeling",
+    label: "Freewheeling",
     count: 94,
     color: "bg-[#fca5a5]",
     category: "Safety",
