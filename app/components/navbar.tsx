@@ -12,9 +12,8 @@ const poppins = Poppins({
 
 const NavLink = [
   { name: "Home", link: "/" },
-  { name: "About us", link: "/about" },
-  { name: "Product", link: "/products" },
-  { name: "Project", link: "/projects" },
+  { name: "About us", link: "/about-us" },
+  { name: "Contact Us", link: "/contact-us" },
 ];
 
 export default function Navbar() {
@@ -56,10 +55,11 @@ export default function Navbar() {
         </div>
 
         <Link
-          href="/contact"
+          href="https://gtrac.in:8080/"
+          target="_blank"
           className="bg-[#2563eb] hover:bg-[#1d4ed8] text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:shadow-md hover:scale-[1.02] active:scale-95 text-center"
         >
-          Contact us
+          User Login
         </Link>
       </div>
     </div>

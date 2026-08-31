@@ -1,18 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { BackgroundRippleEffect } from "@/components/ui/background-ripple-effect";
-import Navbar from "./navbar";
-import Products from "./products";
-import ElockContent from "./elock/elock-content";
-import DashcamContent from "./dashcam/dashcam-content";
 import { products } from "@/constant/content";
-import ProspectIndustries from "./prospect-industries";
-import FAQ from "./faq";
-import Footer from "./footer";
-import PadlockContent from "./padlock/padlock-content";
+import { useEffect, useState } from "react";
 import BreathAnalyzerContent from "./breath-analyzer/breath-analyzer-content";
+import DashcamContent from "./dashcam/dashcam-content";
+import ElockContent from "./elock/elock-content";
+import FAQ from "./faq";
 import ObdContent from "./obd/obd-content";
+import PadlockContent from "./padlock/padlock-content";
+import Products from "./products";
+import ProspectIndustries from "./prospect-industries";
 import RadialProductSelector from "./radial-product-selector";
 
 export default function HomeLayout() {
@@ -81,7 +79,7 @@ export default function HomeLayout() {
       <div>
         <main className="h-[calc(100vh+800px)] w-full overflow-x-hidden relative flex flex-col">
           <BackgroundRippleEffect />
-          <Navbar />
+
           <Products
             mainProduct={mainProduct}
             setMainProduct={setMainProduct}
@@ -102,7 +100,6 @@ export default function HomeLayout() {
           mainProduct.name === "Breath Analyzer") && <BreathAnalyzerContent />}
         <FAQ productName={mainProduct.name} />
         <ProspectIndustries />
-        <Footer />
       </div>
     </>
   );
