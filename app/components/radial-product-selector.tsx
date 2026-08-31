@@ -185,10 +185,8 @@ export const RadialProductSelector = ({
                           marginTop: "-42px",
                         }}
                       >
-                        {/* Compact Floating Product Card Pointing to Center (Slate border on hover) */}
-                        <div className="w-16 h-21 sm:w-18 sm:h-24 rounded-2xl bg-white p-2 shadow-xl border border-zinc-100 hover:border-slate-700 transition-colors duration-200 flex flex-col items-center justify-center">
-                          {/* Product Image Container */}
-                          <div className="relative w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center">
+                        <div className="group w-16 h-21 sm:w-18 sm:h-24 rounded-2xl bg-white p-2 shadow-xl border border-zinc-100 group-hover:border-slate-700 transition-all duration-200 flex flex-col items-center justify-center relative overflow-hidden">
+                          <div className="relative w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center transition-opacity duration-200 group-hover:opacity-15">
                             <Image
                               src={product.image}
                               alt={product.name}
@@ -197,6 +195,14 @@ export const RadialProductSelector = ({
                               className="object-contain drop-shadow-sm"
                               draggable={false}
                             />
+                          </div>
+
+                          <div className="absolute inset-0 flex items-center justify-center p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                            <span
+                              className={`${poppins.className} text-[10px] sm:text-[11px] font-bold text-neutral-900 text-center leading-tight tracking-tight uppercase select-none`}
+                            >
+                              {product.name}
+                            </span>
                           </div>
                         </div>
                       </motion.div>

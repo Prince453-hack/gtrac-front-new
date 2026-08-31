@@ -100,7 +100,7 @@ export default function HomeLayout() {
         {mainProduct.name === "OBD" && <ObdContent />}
         {(mainProduct.name === "Breath Analyze" ||
           mainProduct.name === "Breath Analyzer") && <BreathAnalyzerContent />}
-        <FAQ />
+        <FAQ productName={mainProduct.name} />
         <ProspectIndustries />
         <Footer />
       </div>

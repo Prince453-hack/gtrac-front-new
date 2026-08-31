@@ -3,21 +3,26 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Goldman, Poppins } from "next/font/google";
+import { getProductFaq } from "@/constant/faq";
 
 const goldman = Goldman({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
 
-import { ElockFaq } from "@/constant/faq";
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
 });
 
-const FAQ = () => {
+interface FAQProps {
+  productName?: string;
+}
+
+const FAQ = ({ productName }: FAQProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const productFaq = getProductFaq(productName);
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -39,7 +44,7 @@ const FAQ = () => {
 
       {/* Grid container */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-20 max-w-7xl w-full relative z-10">
-        {/* Left Column (Unchanged contents) */}
+        {/* Left Column */}
         <div className="flex flex-col space-y-4 w-full lg:w-[48%]">
           <div className="flex items-center space-x-2 text-zinc-300">
             <div className="size-3 bg-blue-500 rounded-full">
@@ -61,18 +66,19 @@ const FAQ = () => {
 
           <div className="border border-purple-500/25 rounded-xl overflow-hidden mt-7">
             <Image
-              src="/faq/elock-faq.png"
+              src={productFaq.image}
               width={771}
               height={406}
-              alt="Elock & Controller"
+              alt={productFaq.imageAlt}
               draggable={false}
               className="w-full h-auto object-cover"
             />
           </div>
         </div>
 
-        <div className="w-full lg:w-[48%] flex flex-col space-y-8 mt-8 lg:mt-0">
-          {ElockFaq.map((item, index) => {
+        {/* Right Column: Dynamic Product FAQs */}
+        <div className="w-full lg:w-[48%] flex flex-col space-y-6 mt-8 lg:mt-0">
+          {productFaq.faqs.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <div
@@ -110,7 +116,7 @@ const FAQ = () => {
                 <div
                   className={`transition-all duration-300 ease-in-out overflow-hidden ${
                     isOpen
-                      ? "max-h-48 border-t border-white/10 opacity-100"
+                      ? "max-h-64 border-t border-white/10 opacity-100"
                       : "max-h-0 opacity-0"
                   }`}
                 >
