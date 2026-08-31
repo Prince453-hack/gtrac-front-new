@@ -212,35 +212,40 @@ export const RadialProductSelector = ({
               )}
             </AnimatePresence>
 
-            {/* Central Circular Trigger Button */}
-            <div className="p-1 rounded-full border border-dashed border-zinc-400/80 hover:border-zinc-600 transition-colors">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-zinc-950 text-white shadow-xl flex flex-col items-center justify-center cursor-pointer border border-zinc-800 relative z-50 overflow-hidden"
-              >
-                {/* Ambient Background Glow */}
-                <div className="absolute inset-0 bg-radial from-zinc-800 to-zinc-950 opacity-80" />
+            {/* Central Circular Trigger Button (High contrast with ambient halo for dark & light backgrounds) */}
+            <div className="relative group/btn">
+              {/* Subtle ambient halo to pop on pitch-black and dark sections */}
+              <div className="absolute -inset-1 rounded-full bg-white/20 blur-md pointer-events-none transition-all duration-300" />
 
-                {/* Icon / Action state */}
-                {isOpen ? (
-                  <div className="relative z-10 flex flex-col items-center">
-                    <X className="w-5 h-5 text-zinc-300" />
-                    <span
-                      className={`${poppins.className} text-[9px] font-semibold text-zinc-400 tracking-wider uppercase mt-0.5`}
-                    >
-                      Close
-                    </span>
-                  </div>
-                ) : (
-                  <div className="relative z-10 flex flex-col items-center text-center px-1">
-                    <span
-                      className={`${goldman.className} text-[11px] sm:text-xs font-bold text-white tracking-tight leading-tight block`}
-                    >
-                      All <br /> Product
-                    </span>
-                  </div>
-                )}
-              </button>
+              <div className="p-1 rounded-full border-2 border-dashed border-white/70 bg-black/50 backdrop-blur-md shadow-2xl group-hover/btn:border-white transition-colors relative z-10">
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-linear-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white shadow-2xl flex flex-col items-center justify-center cursor-pointer border-2 border-white/80 hover:border-white hover:scale-102 active:scale-95 transition-all duration-200 relative z-50 overflow-hidden"
+                >
+                  {/* Glassmorphic Ambient Highlight */}
+                  <div className="absolute inset-0 bg-radial from-white/15 to-transparent opacity-60 pointer-events-none" />
+
+                  {/* Icon / Action state */}
+                  {isOpen ? (
+                    <div className="relative z-10 flex flex-col items-center">
+                      <X className="w-5 h-5 text-white drop-shadow-md" />
+                      <span
+                        className={`${poppins.className} text-[9px] font-bold text-white/90 tracking-wider uppercase mt-0.5`}
+                      >
+                        Close
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="relative z-10 flex flex-col items-center text-center px-1">
+                      <span
+                        className={`${goldman.className} text-[11px] sm:text-xs font-bold text-white tracking-tight leading-tight block drop-shadow-md`}
+                      >
+                        All <br /> Product
+                      </span>
+                    </div>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </motion.div>

@@ -43,10 +43,10 @@ const ProspectIndustries = () => {
         {ProspectData.map(({ title, description, imagePath }) => (
           <div
             key={title}
-            className="relative group flex-1 hover:flex-[2.8] h-full bg-[#FCFCFD] hover:bg-transparent border border-neutral-100/80 shadow-md p-6 flex flex-col hover:shadow-none hover:border-none justify-between cursor-pointer transition-all duration-500 ease-in-out overflow-hidden"
+            className="relative group flex-1 hover:flex-[2.8] h-full bg-[#FCFCFD] hover:bg-transparent border border-neutral-100/80 shadow-md p-6 pb-0 flex flex-col hover:shadow-none hover:border-none justify-between cursor-pointer transition-all duration-500 ease-in-out overflow-hidden"
           >
             {/* Text Area */}
-            <div className="absolute top-5 left-5 right-5 text-left flex flex-col">
+            <div className="absolute top-5 left-5 right-5 text-left flex flex-col z-10">
               <h2 className="text-xl font-semibold text-zinc-800 tracking-wide max-w-40 group-hover:max-w-full transition-all duration-500 ease-in-out">
                 {title}
               </h2>
@@ -57,15 +57,15 @@ const ProspectIndustries = () => {
               </p>
             </div>
 
-            {/* Bottom Image */}
-            <div className="relative w-full h-[20vh] group-hover:h-[28vh] mt-auto flex items-end justify-center overflow-hidden transition-all duration-500 ease-in-out">
+            {/* Bottom Image (Anchored flush to bottom) */}
+            <div className="absolute bottom-0 left-0 right-0 w-full h-[25vh] sm:h-[27vh] group-hover:h-[28vh] flex items-end justify-center overflow-hidden transition-all duration-500 ease-in-out">
               <Image
                 src={imagePath}
                 alt={title}
                 width={500}
                 height={500}
                 draggable={false}
-                className="object-contain max-h-full transition-all duration-500 ease-in-out transform group-hover:scale-[1.25]"
+                className="object-contain object-bottom w-full h-full max-h-full transition-all duration-500 ease-in-out transform scale-110 group-hover:scale-100"
               />
             </div>
           </div>
