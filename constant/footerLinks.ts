@@ -2,10 +2,9 @@ export const footerLinks = [
   {
     title: "Pages",
     links: [
-      { label: "All Products", href: "#" },
-      { label: "Studio", href: "#" },
-      { label: "Clients", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "Home", href: "/" },
+      { label: "About Us", href: "/about-us" },
+      { label: "Contact Us", href: "/contact-us" },
     ],
   },
   {
@@ -20,17 +19,9 @@ export const footerLinks = [
   {
     title: "Legal",
     links: [
-      { label: "Privacy Policy", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Cookie Policy", href: "#" },
-    ],
-  },
-  {
-    title: "Register",
-    links: [
-      { label: "Sign Up", href: "#" },
-      { label: "Login", href: "#" },
-      { label: "Forgot Password", href: "#" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Terms of Service", href: "/terms-and-conditions" },
+      { label: "Refund Policy", href: "/refund-policy" },
     ],
   },
 ];

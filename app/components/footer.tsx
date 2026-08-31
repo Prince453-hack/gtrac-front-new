@@ -14,9 +14,10 @@ const poppins = Poppins({
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black w-full pt-24 pb-0 overflow-hidden text-neutral-200 border-t border-white/5">
-      <div className="relative z-10 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 md:gap-8 mb-40">
-        <div className="flex flex-col space-y-6">
+    <footer className="relative z-50 bg-black w-full pt-24 pb-0 overflow-hidden text-neutral-200 border-t border-white/5">
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-10 md:gap-12 mb-40 px-6 md:px-12">
+        {/* Left Column: Logo & Copyright */}
+        <div className="flex flex-col space-y-6 shrink-0">
           <Image
             src="/main-logo.png"
             alt="G-Trac Logo"
@@ -28,14 +29,15 @@ const Footer = () => {
           <p
             className={`${poppins.className} text-xs text-zinc-400/70 font-light`}
           >
-            &copy; Copyright G-Trac {new Date().getFullYear()}. All rights
-            reserved.
+            Copyright &copy; {new Date().getFullYear()}, ITG Group of Companies,
+            All Rights Reserved.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-16">
+        {/* Middle Group: 3 Link Columns (Pages, Socials, Legal) with reduced gap */}
+        <div className="flex flex-wrap sm:flex-nowrap gap-10 sm:gap-12 md:gap-14">
           {footerLinks.map(({ title, links }) => (
-            <div key={title} className="flex flex-col space-y-4">
+            <div key={title} className="flex flex-col space-y-3 min-w-22.5">
               <h3
                 className={`${poppins.className} font-semibold text-white text-sm tracking-wider`}
               >
@@ -57,6 +59,24 @@ const Footer = () => {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Right Column: Our Company */}
+        <div className="flex flex-col space-y-3 max-w-xs shrink-0">
+          <h3
+            className={`${poppins.className} font-semibold text-white text-sm tracking-wider`}
+          >
+            Our Company
+          </h3>
+          <p
+            className={`${poppins.className} text-xs text-zinc-400 font-light leading-relaxed`}
+          >
+            As an epitome of trust and stable solutions ensuring 99% uptime, our
+            Fleet Management Solutions strives to excel with world class
+            technology and expertise aspiring to bring together the largest
+            network of state of the art GPS hardware, software and PAN India
+            support services.
+          </p>
         </div>
       </div>
 
