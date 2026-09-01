@@ -272,17 +272,33 @@ const SafetyFeatures = () => {
   const [wheelRotation, setWheelRotation] = useState(0);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const scrollToFeature = (index: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const totalScrollableHeight = rect.height - viewportHeight;
+    const containerTop = window.scrollY + rect.top;
+
+    const featProg = (index + 0.5) / safetyFeaturesData.length;
+    const targetScrollProgress = 0.25 + featProg * 0.75;
+    const targetScrollY =
+      containerTop + targetScrollProgress * totalScrollableHeight;
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: "smooth",
+    });
+  };
+
   const handleUp = () => {
     if (activeIndex > 0) {
-      setActiveIndex((prev) => prev - 1);
-      setWheelRotation((prev) => prev - 90);
+      scrollToFeature(activeIndex - 1);
     }
   };
 
   const handleDown = () => {
     if (activeIndex < safetyFeaturesData.length - 1) {
-      setActiveIndex((prev) => prev + 1);
-      setWheelRotation((prev) => prev + 90);
+      scrollToFeature(activeIndex + 1);
     }
   };
 
@@ -300,6 +316,19 @@ const SafetyFeatures = () => {
         1,
       );
       setScrollProgress(progress);
+
+      if (progress >= 0.25) {
+        const featProg = Math.min(Math.max((progress - 0.25) / 0.75, 0), 1);
+        const index = Math.min(
+          Math.floor(featProg * safetyFeaturesData.length),
+          safetyFeaturesData.length - 1,
+        );
+        setActiveIndex(index);
+        setWheelRotation(index * 90);
+      } else {
+        setActiveIndex(0);
+        setWheelRotation(0);
+      }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -308,34 +337,33 @@ const SafetyFeatures = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Animations calculations
-  const textOpacity = Math.max(1 - scrollProgress * 5, 0);
-  const leftTranslateX = -scrollProgress * 1000;
-  const rightTranslateX = scrollProgress * 1000;
+  // Animations calculations for Hero phase (0 -> 0.25 progress)
+  const heroPhase = Math.min(scrollProgress / 0.25, 1);
+  const textOpacity = Math.max(1 - heroPhase * 4, 0);
+  const leftTranslateX = -heroPhase * 800;
+  const rightTranslateX = heroPhase * 800;
 
-  const easeProgress = Math.pow(scrollProgress, 2);
+  const easeProgress = Math.pow(heroPhase, 2);
   const imageScale = 1 + easeProgress * 44.0;
   const imageRotate = -30;
   const imageTranslateX = 90.4 + easeProgress * 4.8;
   const imageTranslateY = 31.5 - easeProgress * 159.2;
 
   const bgOpacity =
-    scrollProgress < 0.75
-      ? 0.45
-      : Math.max(0.45 - (scrollProgress - 0.75) * 4.5, 0);
+    heroPhase < 0.75 ? 0.45 : Math.max(0.45 - (heroPhase - 0.75) * 4.5, 0);
 
   const dashcamOpacity =
-    scrollProgress < 0.75 ? 1 : Math.max(1 - (scrollProgress - 0.75) * 10, 0);
+    heroPhase < 0.75 ? 1 : Math.max(1 - (heroPhase - 0.75) * 10, 0);
 
   const overlayBgOpacity =
-    scrollProgress < 0.75 ? 0 : Math.min((scrollProgress - 0.75) * 10, 1);
+    heroPhase < 0.75 ? 0 : Math.min((heroPhase - 0.75) * 10, 1);
 
-  const contentProgress = Math.max((scrollProgress - 0.75) / 0.25, 0);
+  const contentProgress = Math.max((heroPhase - 0.75) / 0.25, 0);
 
   const activeFeature = safetyFeaturesData[activeIndex];
 
   return (
-    <div ref={containerRef} className="relative h-[300vh] bg-[#1D2128]">
+    <div ref={containerRef} className="relative h-[480vh] bg-[#1D2128]">
       <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <Image

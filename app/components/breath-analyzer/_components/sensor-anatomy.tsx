@@ -152,7 +152,7 @@ export const SensorAnatomy = () => {
           <div className="relative w-64 sm:w-72 md:w-80 h-120 flex items-center justify-center">
             <Image
               src="/breath-analyzer.png"
-              alt="Breath Analyzer Anatomy"
+              alt="Breathalyzer Anatomy"
               width={340}
               height={520}
               priority

@@ -50,14 +50,22 @@ const ProspectIndustries = () => {
               <h2 className="text-xl font-semibold text-zinc-800 tracking-wide max-w-40 group-hover:max-w-full transition-all duration-500 ease-in-out">
                 {title}
               </h2>
+              {/* Short preview when not hovered (4-5 lines) */}
+              <div className="mt-3 group-hover:hidden">
+                <p
+                  className={`${poppins.className} text-sm text-zinc-500 font-light leading-relaxed line-clamp-4`}
+                >
+                  {description}
+                </p>
+              </div>
+
               <p
-                className={`${poppins.className} text-sm text-zinc-500 font-light mt-3 leading-relaxed opacity-0 max-h-0 overflow-hidden group-hover:opacity-100 group-hover:max-h-32 transition-all duration-500 ease-in-out`}
+                className={`${poppins.className} text-sm text-zinc-500 font-light mt-3 leading-relaxed hidden group-hover:block transition-all duration-500 ease-in-out`}
               >
                 {description}
               </p>
             </div>
 
-            {/* Bottom Image (Anchored flush to bottom) */}
             <div className="absolute bottom-0 left-0 right-0 w-full h-[25vh] sm:h-[27vh] group-hover:h-[28vh] flex items-end justify-center overflow-hidden transition-all duration-500 ease-in-out">
               <Image
                 src={imagePath}

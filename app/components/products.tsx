@@ -207,7 +207,11 @@ const Products = ({
           style={{ transform: `translateX(-${progress * 105}%)` }}
         >
           {leftProducts.map((product, index) => (
-            <div key={product.name} className="flex items-center gap-3">
+            <div
+              key={product.name}
+              onClick={() => handleLeftSwap(index)}
+              className="flex items-center gap-3 cursor-pointer"
+            >
               <div className="relative w-24 h-24 shrink-0">
                 <Image
                   src={product.image}
@@ -228,7 +232,10 @@ const Products = ({
                   {product.description}
                 </p>
                 <button
-                  onClick={() => handleLeftSwap(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLeftSwap(index);
+                  }}
                   className="mt-2 cursor-pointer border border-white px-4 py-0.5 rounded-full text-[9px] text-neutral-600 hover:bg-white/40 inset-shadow-sm transition-colors w-fit"
                 >
                   View
@@ -243,7 +250,11 @@ const Products = ({
           style={{ transform: `translateX(${progress * 105}%)` }}
         >
           {rightProducts.map((product, index) => (
-            <div key={product.name} className="flex items-center gap-3">
+            <div
+              key={product.name}
+              onClick={() => handleRightSwap(index)}
+              className="flex items-center gap-3 cursor-pointer"
+            >
               <div className="relative w-24 h-24 shrink-0">
                 <Image
                   src={product.image}
@@ -264,7 +275,10 @@ const Products = ({
                   {product.description}
                 </p>
                 <button
-                  onClick={() => handleRightSwap(index)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRightSwap(index);
+                  }}
                   className="mt-2 cursor-pointer border border-white px-4 py-0.5 rounded-full text-[9px] text-neutral-600 hover:bg-white/40 inset-shadow-sm transition-colors w-fit"
                 >
                   View

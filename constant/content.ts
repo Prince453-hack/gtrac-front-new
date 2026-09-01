@@ -68,7 +68,7 @@ export const products = [
     ],
   },
   {
-    name: "Breath Analyze",
+    name: "Breathalyzer",
     image: "/breath-analyzer.png",
     description: "Test quickly. Verify instantly. Drive safely.",
     titleWidth: "130vw",

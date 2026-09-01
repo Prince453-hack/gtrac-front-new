@@ -17,7 +17,7 @@ const labels = [
     yOffset: 300,
   },
   {
-    name: "PCB / Connector",
+    name: "Limit Switch Holder",
     align: "below",
     getX: (p: number) => -40 - p * 230,
     yLineHeight: 120,

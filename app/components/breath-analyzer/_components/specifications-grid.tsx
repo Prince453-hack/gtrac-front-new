@@ -57,7 +57,7 @@ export const SpecificationsGrid = () => {
           </p>
         </motion.div>
 
-        {/* Breath Analyzer Center Image */}
+        {/* Breathalyzer Center Image */}
         <motion.div
           initial={{ opacity: 0, y: 50, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -68,7 +68,7 @@ export const SpecificationsGrid = () => {
           <div className="relative">
             <Image
               src="/breath-analyzer.png"
-              alt="G-Trac Breath Analyzer"
+              alt="G-Trac Breathalyzer"
               width={420}
               height={560}
               draggable={false}

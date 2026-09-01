@@ -150,7 +150,7 @@ export const DashcamFaq: FaqItem[] = [
 
 export const BreathAnalyzerFaq: FaqItem[] = [
   {
-    question: "How accurate is the Fuel-Cell Breath Analyzer?",
+    question: "How accurate is the Fuel-Cell Breathalyzer?",
     answer:
       "The device utilizes an automotive-grade fuel-cell electrochemical sensor that delivers clinical-grade Blood Alcohol Concentration (BAC) accuracy with zero false positives from food or mouthwash.",
   },
@@ -166,7 +166,7 @@ export const BreathAnalyzerFaq: FaqItem[] = [
   },
   {
     question:
-      "Can the Breath Analyzer lock the vehicle ignition if alcohol is detected?",
+      "Can the Breathalyzer lock the vehicle ignition if alcohol is detected?",
     answer:
       "Yes. When paired with vehicle ignition interlock modules, the system automatically prevents engine startup if the driver's BAC exceeds the company safety limit.",
   },
@@ -206,12 +206,17 @@ export const productFaqMap: Record<string, ProductFaqConfig> = {
   },
   "Breath Analyze": {
     image: "/faq/breath-faq.png",
-    imageAlt: "Digital Breath Analyzer",
+    imageAlt: "Digital Breathalyzer",
     faqs: BreathAnalyzerFaq,
   },
   "Breath Analyzer": {
     image: "/faq/breath-faq.png",
-    imageAlt: "Digital Breath Analyzer",
+    imageAlt: "Digital Breathalyzer",
+    faqs: BreathAnalyzerFaq,
+  },
+  Breathalyzer: {
+    image: "/faq/breath-faq.png",
+    imageAlt: "Digital Breathalyzer",
     faqs: BreathAnalyzerFaq,
   },
 };

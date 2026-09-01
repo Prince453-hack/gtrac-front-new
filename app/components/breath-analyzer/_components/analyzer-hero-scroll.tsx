@@ -88,7 +88,7 @@ export const AnalyzerHeroScroll = () => {
             transition={{ duration: 0.6 }}
             className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-zinc-900 leading-tight tracking-tight`}
           >
-            Smart Breath Analyzer <br />
+            Smart Breathalyzer <br />
             <span className="bg-linear-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
               & Vehicle Interlock
             </span>
@@ -161,7 +161,7 @@ export const AnalyzerHeroScroll = () => {
             >
               <Image
                 src="/breath-analyzer.png"
-                alt="G-Trac Breath Analyzer"
+                alt="G-Trac Breathalyzer"
                 width={360}
                 height={520}
                 priority
