@@ -124,6 +124,7 @@ const WorkflowCard = ({
     </div>
   );
 
+  // Desktop title — original (hidden on mobile)
   const titleElement = (
     <div
       className={`w-full md:w-[46%] hidden md:flex flex-col ${
@@ -138,11 +139,23 @@ const WorkflowCard = ({
     </div>
   );
 
+  // Mobile-only title — shows above card, centred
+  const mobileTitleElement = (
+    <div className="md:hidden w-full text-center pb-4 px-4">
+      <h2
+        className={`${goldman.className} text-xl font-bold text-white tracking-wide leading-tight`}
+      >
+        {step.title}
+      </h2>
+    </div>
+  );
+
   return (
     <div
       ref={containerRef}
-      className="flex w-full items-center justify-between relative"
+      className="flex flex-col md:flex-row w-full md:items-center md:justify-between relative"
     >
+      {mobileTitleElement}
       {isLeft ? (
         <>
           {cardElement}
@@ -173,20 +186,22 @@ const WorkFlow = () => {
     <div
       className={`${goldman.className} bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-size-[14px_24px] bg-zinc-900 text-white min-h-screen px-2 py-24 relative flex flex-col items-center`}
     >
-      <div className="text-center mb-20 z-10">
-        <h1 className="font-medium text-5xl leading-tight">
+      <div className="text-center mb-10 md:mb-20 z-10 px-4">
+        <h1 className="font-medium text-3xl md:text-5xl leading-tight">
           Container Security <br /> Workflow
         </h1>
-        <p className="mt-7">
+        <p className={`${poppins.className} mt-5 md:mt-7 text-sm md:text-base text-neutral-300 md:text-white max-w-sm md:max-w-none mx-auto`}>
           From Securing locking to authorized unlocking, every step is
-          monitored, tracked and recorded to ensure <br /> complete cargo
-          security throughout the journey.
+          monitored, tracked and recorded to ensure{" "}
+          <br className="hidden md:block" />
+          complete cargo security throughout the journey.
         </p>
       </div>
 
       <div className="relative w-full max-w-360 flex-1 mt-10">
+        {/* Scroll line: hidden on mobile, centred on desktop */}
         <div className="absolute inset-0 pointer-events-none z-0">
-          <div className="sticky top-[32.5vh] h-[35vh] w-full flex items-center justify-center">
+          <div className="sticky top-[32.5vh] h-[35vh] w-full hidden md:flex items-center justify-center">
             <div
               className="w-4 h-full overflow-hidden"
               style={{
@@ -219,7 +234,7 @@ const WorkFlow = () => {
         </div>
 
         <div
-          className={`${poppins.className} flex flex-col gap-44 relative z-10`}
+          className={`${poppins.className} flex flex-col gap-12 md:gap-44 relative z-10`}
         >
           {ContainerContent.map((step, idx) => {
             const numStr = String(idx + 1).padStart(2, "0");
