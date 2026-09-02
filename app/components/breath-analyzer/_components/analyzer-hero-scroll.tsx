@@ -79,14 +79,14 @@ export const AnalyzerHeroScroll = () => {
       </div>
 
       {/* Sticky Main Stage */}
-      <div className="sticky top-0 min-h-screen w-full flex flex-col justify-between items-center py-12 px-6 sm:px-12 lg:px-20 z-10">
+      <div className="sticky top-0 min-h-screen w-full flex flex-col justify-between items-center py-8 sm:py-12 px-4 sm:px-12 lg:px-20 z-10">
         {/* Header Title */}
-        <div className="text-center max-w-3xl mx-auto mt-6">
+        <div className="text-center max-w-3xl mx-auto mt-2 sm:mt-6">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-zinc-900 leading-tight tracking-tight`}
+            className={`${goldman.className} text-2xl sm:text-4xl lg:text-6xl font-medium text-zinc-900 leading-tight tracking-tight`}
           >
             Smart Breathalyzer <br />
             <span className="bg-linear-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
@@ -98,7 +98,7 @@ export const AnalyzerHeroScroll = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className={`${poppins.className} mt-3 text-sm sm:text-base text-zinc-600 max-w-xl mx-auto leading-relaxed`}
+            className={`${poppins.className} mt-2 sm:mt-3 text-xs sm:text-base text-zinc-600 max-w-xl mx-auto leading-relaxed`}
           >
             Instant pre-trip alcohol verification for commercial fleets. High-precision
             platinum sensor technology wirelessly synced to cloud dashboards and vehicle immobilizers.
@@ -106,21 +106,21 @@ export const AnalyzerHeroScroll = () => {
         </div>
 
         {/* Central Display: 3-Column Balanced Layout */}
-        <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center my-auto py-6">
+        <div className="relative w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-center my-auto py-4 sm:py-6">
           {/* Left Info Column */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-4 flex flex-col gap-4 text-left order-2 lg:order-1"
+            className="lg:col-span-4 flex flex-col gap-3 sm:gap-4 text-left order-2 lg:order-1"
           >
-            <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <Activity className="w-5 h-5" />
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-1.5 sm:mb-2">
+                <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <Activity className="w-4 sm:w-5 h-4 sm:h-5" />
                 </div>
-                <h2 className={`${goldman.className} text-lg font-medium text-zinc-800`}>
+                <h2 className={`${goldman.className} text-base sm:text-lg font-medium text-zinc-800`}>
                   Zero Cross-Sensitivity
                 </h2>
               </div>
@@ -129,12 +129,12 @@ export const AnalyzerHeroScroll = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-                  <Radio className="w-5 h-5" />
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-1.5 sm:mb-2">
+                <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                  <Radio className="w-4 sm:w-5 h-4 sm:h-5" />
                 </div>
-                <h2 className={`${goldman.className} text-lg font-medium text-zinc-800`}>
+                <h2 className={`${goldman.className} text-base sm:text-lg font-medium text-zinc-800`}>
                   Real-Time Fleet Gateway
                 </h2>
               </div>
@@ -177,14 +177,14 @@ export const AnalyzerHeroScroll = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-4 flex flex-col gap-4 text-left order-3"
+            className="lg:col-span-4 flex flex-col gap-3 sm:gap-4 text-left order-3"
           >
-            <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <Zap className="w-5 h-5" />
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-1.5 sm:mb-2">
+                <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <Zap className="w-4 sm:w-5 h-4 sm:h-5" />
                 </div>
-                <h2 className={`${goldman.className} text-lg font-medium text-zinc-800`}>
+                <h2 className={`${goldman.className} text-base sm:text-lg font-medium text-zinc-800`}>
                   Engine Interlock Relay
                 </h2>
               </div>
@@ -193,12 +193,12 @@ export const AnalyzerHeroScroll = () => {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-9 h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center">
-                  <ShieldCheck className="w-5 h-5" />
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 backdrop-blur-md border border-emerald-100/70 shadow-xs hover:shadow-md transition-shadow">
+              <div className="flex items-center gap-3 mb-1.5 sm:mb-2">
+                <div className="w-8 sm:w-9 h-8 sm:h-9 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+                  <ShieldCheck className="w-4 sm:w-5 h-4 sm:h-5" />
                 </div>
-                <h2 className={`${goldman.className} text-lg font-medium text-zinc-800`}>
+                <h2 className={`${goldman.className} text-base sm:text-lg font-medium text-zinc-800`}>
                   Anti-Tamper & Compliance
                 </h2>
               </div>

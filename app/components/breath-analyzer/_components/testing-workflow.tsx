@@ -220,15 +220,15 @@ export const TestingWorkflow = () => {
 
   return (
     <div
-      className="bg-white min-h-screen py-24 px-6 md:px-20 relative"
+      className="bg-white min-h-screen py-16 sm:py-24 px-4 sm:px-12 md:px-20 relative"
       style={{
         background: "linear-gradient(180deg, #FFFFFF 0%, #F5FAF7 50%, #FFFFFF 100%)",
       }}
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-8 sm:gap-12 lg:gap-16">
         {/* Left Column (Sticky Visualizer + Title) */}
-        <div className="w-full lg:w-[48%] lg:sticky lg:top-[15vh] flex flex-col justify-between h-[70vh] gap-8">
-          <div className="relative w-full h-[42vh] p-1.5 flex items-center justify-center">
+        <div className="w-full lg:w-[48%] lg:sticky lg:top-[15vh] flex flex-col justify-between h-auto lg:h-[70vh] gap-6 lg:gap-8">
+          <div className="relative w-full h-70 sm:h-85 lg:h-[42vh] p-1.5 flex items-center justify-center">
             <FrameCorners />
 
             <div className="w-full h-full border border-emerald-400/25 p-1 bg-emerald-50/15 relative overflow-hidden flex items-center justify-center rounded-sm">
@@ -252,14 +252,14 @@ export const TestingWorkflow = () => {
           </div>
 
           {/* Fixed Section Header */}
-          <div className="flex flex-col space-y-4 text-left">
+          <div className="flex flex-col space-y-3 sm:space-y-4 text-left">
             <h2
-              className={`${goldman.className} text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
+              className={`${goldman.className} text-2xl sm:text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
             >
               Breath Screening <br /> & Interlock Workflow
             </h2>
             <p
-              className={`${poppins.className} max-w-lg text-zinc-500 text-sm leading-relaxed`}
+              className={`${poppins.className} max-w-lg text-zinc-500 text-xs sm:text-sm leading-relaxed`}
             >
               From continuous deep-lung exhalation to instant fuel-cell analysis and engine starter release, every step is monitored and logged in real time.
             </p>
@@ -299,7 +299,7 @@ export const TestingWorkflow = () => {
         </div>
 
         {/* Right Scrollable Steps (1, 2, 3, 4 scrolling through) */}
-        <div className="w-full lg:w-[42%] flex flex-col space-y-[45vh] py-[25vh]">
+        <div className="w-full lg:w-[42%] flex flex-col space-y-8 sm:space-y-12 lg:space-y-[45vh] py-6 sm:py-10 lg:py-[25vh]">
           {analyzerWorkflowSteps.map(({ title, description, detailPoints }, index) => {
             const isActive = activeIndex === index;
             const numStr = String(index + 1).padStart(2, "0");
@@ -310,8 +310,8 @@ export const TestingWorkflow = () => {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`transition-all duration-500 ease-in-out relative p-7 shadow-sm rounded-lg ${
-                  isActive ? "opacity-100 scale-100" : "opacity-25 scale-95"
+                className={`transition-all duration-500 ease-in-out relative p-5 sm:p-7 shadow-sm rounded-lg ${
+                  isActive ? "opacity-100 scale-100" : "opacity-40 lg:opacity-25 scale-98 lg:scale-95"
                 }`}
                 style={{
                   background:
@@ -320,27 +320,27 @@ export const TestingWorkflow = () => {
               >
                 {isActive && <FrameCorners />}
 
-                <div className="flex flex-col space-y-6 text-left">
+                <div className="flex flex-col space-y-4 sm:space-y-6 text-left">
                   <div
-                    className={`${goldman.className} text-5xl font-semibold text-zinc-300 tracking-wider flex items-center space-x-4`}
+                    className={`${goldman.className} text-3xl sm:text-5xl font-semibold text-zinc-300 tracking-wider flex items-center space-x-3 sm:space-x-4`}
                   >
-                    <div className="size-5 bg-zinc-300 rounded-sm" />
+                    <div className="size-4 sm:size-5 bg-zinc-300 rounded-sm" />
                     <h1>{numStr}</h1>
                   </div>
 
-                  <div className="flex flex-col space-y-4">
+                  <div className="flex flex-col space-y-3 sm:space-y-4">
                     <h2
-                      className={`${goldman.className} text-xl font-semibold text-zinc-800`}
+                      className={`${goldman.className} text-lg sm:text-xl font-semibold text-zinc-800`}
                     >
                       {title}
                     </h2>
                     <p
-                      className={`${poppins.className} text-sm text-gray-500 leading-relaxed font-light`}
+                      className={`${poppins.className} text-xs sm:text-sm text-gray-500 leading-relaxed font-light`}
                     >
                       {description}
                     </p>
 
-                    <div className="flex flex-col space-y-2 pt-2 border-t border-zinc-100">
+                    <div className="flex flex-col space-y-1.5 sm:space-y-2 pt-2 border-t border-zinc-100">
                       {detailPoints.map((point, pIdx) => (
                         <div key={pIdx} className="flex items-center gap-2">
                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
