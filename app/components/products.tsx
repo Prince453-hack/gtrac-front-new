@@ -75,28 +75,17 @@ const Products = ({
     setRightProducts(updatedRight);
   };
 
+  const isWideProduct =
+    mainProduct.name === "E-lock" || mainProduct.name === "Adas (DMS)";
+
   return (
     <div className="z-10 w-full flex-1 flex flex-col items-center">
-      {/* Title ABOVE the image on the first page */}
       <div
-        className="fixed top-24 sm:top-30 left-1/2 z-10 w-full text-center pointer-events-none px-4"
+        className={`fixed top-[46%] ${
+          isWideProduct ? "left-[28%]" : "left-[32%]"
+        } z-10 flex justify-center items-center pointer-events-none transition-all duration-300`}
         style={{
-          opacity: Math.max(1 - progress * 2.2, 0),
-          transform: `translate(-50%, -${progress * 25}px)`,
-        }}
-      >
-        <h1
-          className={`${goldman.className} text-4xl sm:text-6xl md:text-[7rem] font-semibold tracking-widest text-white/60 uppercase whitespace-nowrap`}
-        >
-          {mainProduct.name}
-        </h1>
-      </div>
-
-      {/* Central Product Image */}
-      <div
-        className="fixed top-[46%] left-1/2 z-10 w-full flex justify-center pointer-events-none"
-        style={{
-          transform: `translate(calc(-50% - ${progress * 24}vw), -40%) scale(${1 + progress * 0.2})`,
+          transform: `translate(-50%, -50%) scale(${1 + progress * 0.15})`,
         }}
       >
         <div className="relative flex justify-center items-center">
@@ -143,26 +132,38 @@ const Products = ({
         </div>
       </div>
 
-      {/* Subtitle BELOW the image on the first page */}
       <div
-        className="fixed bottom-48 left-1/2 z-10 text-center pointer-events-none max-w-l px-1"
+        className={`fixed top-[46%] ${
+          isWideProduct ? "left-[54%]" : "left-[50%]"
+        } z-10 flex flex-col items-center justify-center text-center pointer-events-none max-w-xl px-4 transition-all duration-300`}
         style={{
           opacity: Math.max(1 - progress * 2.2, 0),
-          transform: `translate(-50%, ${progress * 25}px)`,
+          transform: `translateY(calc(-50% - ${progress * 25}px))`,
         }}
       >
+        <h1
+          className={`${goldman.className} text-4xl sm:text-6xl md:text-7xl lg:text-[5.7rem] font-semibold tracking-wider text-white/90 uppercase leading-none mb-6 text-center`}
+        >
+          {mainProduct.name === "Breathalyzer" ? (
+            <>
+              BREATH <br /> ALYZER
+            </>
+          ) : (
+            mainProduct.name
+          )}
+        </h1>
         <p
-          className={`${poppins.className} bg-linear-to-r text-[10px] text-white backdrop-blur-3xl border border-gray-500 bg-white/15 py-2 px-6 rounded-full font-medium tracking-[0.2em] uppercase`}
+          className={`${poppins.className} bg-linear-to-r text-xs sm:text-sm text-zinc-500 backdrop-blur-3xl border border-gray-500/60 bg-white/15 p-2.5 rounded-full font-medium tracking-[0.2em] uppercase text-center`}
         >
           {mainProduct.description}
         </p>
       </div>
 
-      {/* Product Details Section (Slides in on scroll) */}
+      {/* Product Details Section (Slides in on scroll on the right side) */}
       <div
-        className="fixed top-[50%] left-[55%] -translate-y-1/2 z-10 w-[38vw] max-w-xl flex flex-col text-left pointer-events-none"
+        className="fixed top-[50%] left-[52%] -translate-y-1/2 z-10 w-[38vw] max-w-xl flex flex-col text-left pointer-events-none"
         style={{
-          transform: `translateX(calc(${50 - progress * 52}vw))`,
+          transform: `translateX(calc(${30 - progress * 30}vw))`,
           opacity: progress,
         }}
       >
