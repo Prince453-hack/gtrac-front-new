@@ -67,14 +67,14 @@ const rightBenefits = [
 export const ObdBenefits = () => {
   return (
     <section
-      className={`${outfit.className} relative w-full py-28 px-6 sm:px-12 lg:px-20 bg-white text-zinc-900 overflow-hidden border-b border-zinc-200`}
+      className={`${outfit.className} relative w-full py-16 sm:py-28 px-4 sm:px-12 lg:px-20 bg-white text-zinc-900 overflow-hidden border-b border-zinc-200`}
     >
       {/* Background Subtle Blueprint Lines */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-size-[4rem_4rem] opacity-70 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header (Matching Benefits Screenshot) */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -89,7 +89,7 @@ export const ObdBenefits = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className={`${goldman.className} text-3xl sm:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
+            className={`${goldman.className} text-2xl sm:text-4xl lg:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
           >
             Making Fleets 10x Smarter
           </motion.h2>
@@ -107,7 +107,7 @@ export const ObdBenefits = () => {
         </div>
 
         {/* 3-Column Layout: Left 3 Cards + Center Light Stage + Right 3 Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-stretch">
           {/* Left Column: 3 Benefit Cards */}
           <div className="lg:col-span-4 flex flex-col gap-4">
             {leftBenefits.map((item, idx) => {
@@ -119,7 +119,7 @@ export const ObdBenefits = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-xs hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-start text-left group"
+                  className="p-5 sm:p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-xs hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-start text-left group"
                 >
                   <div className="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                     <Icon className="w-4 h-4" />
@@ -145,7 +145,7 @@ export const ObdBenefits = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="lg:col-span-4 rounded-3xl bg-[#FAFAFA] text-zinc-900 p-6 sm:p-7 flex flex-col justify-between border border-zinc-200/90 shadow-sm overflow-hidden relative"
+            className="lg:col-span-4 rounded-2xl sm:rounded-3xl bg-[#FAFAFA] text-zinc-900 p-5 sm:p-7 flex flex-col justify-between border border-zinc-200/90 shadow-sm overflow-hidden relative min-h-75 lg:min-h-0"
           >
             {/* Top Area: Connected Gateway Diagram */}
             <div className="w-full flex flex-col items-center py-4 relative">
@@ -268,7 +268,7 @@ export const ObdBenefits = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
-                  className="p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-xs hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-start text-left group"
+                  className="p-5 sm:p-6 rounded-2xl bg-white border border-zinc-200/90 shadow-xs hover:shadow-md hover:border-zinc-300 transition-all flex flex-col justify-start text-left group"
                 >
                   <div className="w-8 h-8 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                     <Icon className="w-4 h-4" />

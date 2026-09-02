@@ -93,7 +93,7 @@ export const ObdIntegrationFlow = () => {
 
   return (
     <section
-      className={`${outfit.className} relative w-full py-24 bg-white text-zinc-900 border-y border-zinc-200 overflow-hidden`}
+      className={`${outfit.className} relative w-full py-16 sm:py-24 bg-white text-zinc-900 border-y border-zinc-200 overflow-hidden`}
     >
       {/* Outer Technical Blueprint Grid Lines */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none" />
@@ -102,9 +102,9 @@ export const ObdIntegrationFlow = () => {
       <div className="absolute top-0 left-0 right-0 h-px bg-zinc-200" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-zinc-200" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-12 lg:px-20">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-12 lg:px-20">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -119,7 +119,7 @@ export const ObdIntegrationFlow = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className={`${goldman.className} text-3xl sm:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
+            className={`${goldman.className} text-2xl sm:text-4xl lg:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
           >
             Integrates easily
           </motion.h2>
@@ -148,7 +148,7 @@ export const ObdIntegrationFlow = () => {
                 <div
                   key={step.id}
                   onClick={() => setActiveTab(idx)}
-                  className={`p-7 cursor-pointer transition-all duration-200 relative text-left group ${
+                  className={`p-5 sm:p-7 cursor-pointer transition-all duration-200 relative text-left group ${
                     isActive ? "bg-zinc-50/90" : "bg-white hover:bg-zinc-50/50"
                   }`}
                 >
@@ -167,7 +167,7 @@ export const ObdIntegrationFlow = () => {
                       }`}
                     />
                     <h3
-                      className={`${goldman.className} text-base font-semibold transition-colors ${
+                      className={`${goldman.className} text-sm sm:text-base font-semibold transition-colors ${
                         isActive ? "text-zinc-900" : "text-zinc-600"
                       }`}
                     >
@@ -186,7 +186,7 @@ export const ObdIntegrationFlow = () => {
           </div>
 
           {/* Right Column: Light Technical Workflow & Log Visualizer (Sharp, clean grid lines) */}
-          <div className="lg:col-span-7 p-8 sm:p-12 flex flex-col justify-center items-center relative bg-[#FAFAFA] min-h-105 overflow-hidden">
+          <div className="lg:col-span-7 p-4 sm:p-8 lg:p-12 flex flex-col justify-center items-center relative bg-[#FAFAFA] min-h-72 sm:min-h-105 overflow-hidden">
             {/* Background Grid Accent Lines */}
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] bg-size-[2.5rem_2.5rem] opacity-60 pointer-events-none" />
 
@@ -209,7 +209,7 @@ export const ObdIntegrationFlow = () => {
             </svg>
 
             {/* Stacked Telemetry Status Pills (Matching the Screenshot's Glowing Pill Stack) */}
-            <div className="relative z-10 w-full max-w-md flex flex-col gap-3 py-2">
+            <div className="relative z-10 w-full max-w-md flex flex-col gap-2.5 sm:gap-3 py-2">
               {telemetryLogs.map((log, idx) => {
                 const isSelected = activeTab === idx % 3;
 
@@ -221,13 +221,13 @@ export const ObdIntegrationFlow = () => {
                       opacity: isSelected ? 1 : 0.65,
                     }}
                     transition={{ duration: 0.3 }}
-                    className={`p-3.5 px-5 border flex items-center justify-between text-left transition-all duration-300 shadow-xs ${
+                    className={`p-2.5 sm:p-3.5 px-3 sm:px-5 border flex items-center justify-between text-left transition-all duration-300 shadow-xs ${
                       isSelected
                         ? "bg-white border-rose-300 shadow-md ring-1 ring-rose-200"
                         : "bg-white/80 border-zinc-200"
                     }`}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3 truncate">
                       <span
                         className={`w-2 h-2 shrink-0 ${
                           isSelected
@@ -235,16 +235,16 @@ export const ObdIntegrationFlow = () => {
                             : "bg-zinc-400"
                         }`}
                       />
-                      <span className="text-xs font-bold font-mono text-zinc-800 tracking-tight">
+                      <span className="text-[11px] sm:text-xs font-bold font-mono text-zinc-800 tracking-tight truncate">
                         {log.label}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <span className="text-[11px] font-mono font-semibold text-rose-600 bg-rose-50 px-2 py-0.5 border border-rose-100">
+                    <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-2">
+                      <span className="text-[10px] sm:text-[11px] font-mono font-semibold text-rose-600 bg-rose-50 px-1.5 sm:px-2 py-0.5 border border-rose-100">
                         {log.status}
                       </span>
-                      <span className="text-[10px] font-mono text-zinc-400">
+                      <span className="text-[9px] sm:text-[10px] font-mono text-zinc-400">
                         {log.time}
                       </span>
                     </div>

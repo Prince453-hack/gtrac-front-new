@@ -22,11 +22,11 @@ const outfit = Outfit({
 export const ObdFeaturesGrid = () => {
   return (
     <section
-      className={`${outfit.className} relative w-full py-28 px-6 sm:px-12 lg:px-20 bg-white text-zinc-900 overflow-hidden border-b border-zinc-200`}
+      className={`${outfit.className} relative w-full py-16 sm:py-28 px-4 sm:px-12 lg:px-20 bg-white text-zinc-900 overflow-hidden border-b border-zinc-200`}
     >
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.span
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ export const ObdFeaturesGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className={`${goldman.className} text-3xl sm:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
+            className={`${goldman.className} text-2xl sm:text-4xl lg:text-5xl font-medium text-zinc-900 tracking-tight leading-tight mb-3`}
           >
             Built for Heavy-Duty Fleet Intelligence
           </motion.h2>
@@ -70,7 +70,7 @@ export const ObdFeaturesGrid = () => {
             return (
               <div
                 key={index}
-                className={`group relative p-8 lg:p-10 flex flex-col justify-start text-left transition-colors duration-300 hover:bg-neutral-50/70 border-b md:border-b-0 ${
+                className={`group relative p-6 sm:p-8 lg:p-10 flex flex-col justify-start text-left transition-colors duration-300 hover:bg-neutral-50/70 border-b md:border-b-0 ${
                   !isRightCol ? "lg:border-r border-zinc-200" : ""
                 } ${isTopRow ? "lg:border-b border-zinc-200" : ""}`}
               >

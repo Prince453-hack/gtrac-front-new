@@ -77,19 +77,19 @@ export const ObdBentoGrid = () => {
     return () => clearInterval(interval);
   }, []);
   return (
-    <section className="relative w-full py-24 px-6 sm:px-12 lg:px-20 bg-[#F6F7F9] overflow-hidden">
+    <section className="relative w-full py-16 sm:py-24 px-4 sm:px-12 lg:px-20 bg-[#F6F7F9] overflow-hidden">
       {/* Background Subtle Grid Texture */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#e5e7eb_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-40 pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Heading (Aceternity Style) */}
-        <div className="mb-14 text-left">
+        <div className="mb-10 sm:mb-14 text-left">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className={`${goldman.className} text-3xl sm:text-5xl font-medium text-zinc-900 tracking-tight leading-tight`}
+            className={`${goldman.className} text-2xl sm:text-4xl lg:text-5xl font-medium text-zinc-900 tracking-tight leading-tight`}
           >
             Replace your Manual Fleet Inspections
           </motion.h2>
@@ -98,7 +98,7 @@ export const ObdBentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className={`${poppins.className} mt-2 text-zinc-500 text-sm sm:text-base max-w-2xl leading-relaxed`}
+            className={`${poppins.className} mt-2 text-zinc-500 text-xs sm:text-base max-w-2xl leading-relaxed`}
           >
             Everything you need for full vehicle health visibility, real-time
             CAN-bus diagnostics, driver safety scoring, and 4G cloud telematics
@@ -107,14 +107,14 @@ export const ObdBentoGrid = () => {
         </div>
 
         {/* 5-Card Bento Grid Layout Matching Screenshot */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-72.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-auto lg:auto-rows-72.5">
           {/* Card 1: Left Tall Card (Spans 2 rows on desktop) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:row-span-2 rounded-3xl bg-zinc-950 text-white p-6 sm:p-7 flex flex-col justify-between overflow-hidden relative shadow-lg group border border-zinc-800"
+            className="lg:row-span-2 rounded-2xl sm:rounded-3xl bg-zinc-950 text-white p-5 sm:p-7 flex flex-col justify-between overflow-hidden relative shadow-lg group border border-zinc-800"
           >
             {/* Top Browser / Device Window Preview */}
             <div className="w-full bg-zinc-900/90 rounded-2xl p-4 border border-zinc-800 shadow-inner flex flex-col gap-3 relative overflow-hidden">
@@ -167,7 +167,7 @@ export const ObdBentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-3xl bg-white p-6 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left"
+            className="rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left min-h-65 lg:min-h-0"
           >
             <div>
               <h3
@@ -232,7 +232,7 @@ export const ObdBentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="rounded-3xl bg-zinc-950 text-white p-6 sm:p-7 flex flex-col justify-between border border-zinc-800 shadow-sm relative overflow-hidden group text-left"
+            className="rounded-2xl sm:rounded-3xl bg-zinc-950 text-white p-5 sm:p-7 flex flex-col justify-between border border-zinc-800 shadow-sm relative overflow-hidden group text-left min-h-65 lg:min-h-0"
           >
             {/* Header */}
             <div className="relative z-10">
@@ -296,7 +296,7 @@ export const ObdBentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="rounded-3xl bg-white p-6 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left min-h-75"
+            className="rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left min-h-75"
           >
             <div>
               <div className="flex items-center justify-between mb-1">
@@ -390,7 +390,7 @@ export const ObdBentoGrid = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="rounded-3xl bg-white p-6 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left"
+            className="rounded-2xl sm:rounded-3xl bg-white p-5 sm:p-7 flex flex-col justify-between border border-zinc-200/80 shadow-xs hover:shadow-md transition-shadow relative overflow-hidden group text-left min-h-65 lg:min-h-0"
           >
             {/* Background Circuit Traces */}
             <div className="absolute right-4 bottom-4 w-36 h-36 opacity-30 pointer-events-none">

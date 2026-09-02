@@ -70,6 +70,7 @@ const labels = [
 const ElockParts = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [stageScale, setStageScale] = useState(1);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -91,6 +92,22 @@ const ElockParts = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 1024) {
+        const calculatedScale = Math.min(Math.max((width - 24) / 920, 0.36), 1);
+        setStageScale(calculatedScale);
+      } else {
+        setStageScale(1);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div
       ref={containerRef}
@@ -99,16 +116,21 @@ const ElockParts = () => {
     >
       {/* Sticky viewport container */}
       <div
-        className="sticky top-0 h-screen w-full flex items-center justify-center px-10 overflow-hidden"
+        className="sticky top-0 h-screen w-full flex items-center justify-center px-2 sm:px-6 md:px-10 overflow-hidden"
         style={{
           background:
             "radial-gradient(circle at center, #2C2C35 0%, #000000 80%)",
         }}
       >
-        <div className="flex flex-row items-center justify-center w-full max-w-7xl gap-2">
+        <div
+          className="flex flex-row items-center justify-center w-full max-w-7xl gap-2 transition-transform duration-100 ease-out origin-center"
+          style={{
+            transform: stageScale < 1 ? `scale(${stageScale})` : undefined,
+          }}
+        >
           {/* Digital Text */}
           <h1
-            className={`${goldman.className} text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-neutral-300/65 select-none transition-all duration-75`}
+            className={`${goldman.className} text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-neutral-300/65 select-none transition-all duration-75 shrink-0`}
             style={{
               transform: `translateX(${80 - progress * 280}px)`,
               opacity: 1 - progress,
@@ -117,7 +139,7 @@ const ElockParts = () => {
             Digital
           </h1>
 
-          <div className="relative w-175 h-[65vh] flex items-center justify-center">
+          <div className="relative w-175 h-[65vh] flex items-center justify-center shrink-0">
             {/* 1. Back Part */}
             <img
               src="/elock/back-part.png"
@@ -252,7 +274,7 @@ const ElockParts = () => {
 
           {/* Elock Text */}
           <h1
-            className={`${goldman.className} text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-neutral-300/65 select-none transition-all duration-75`}
+            className={`${goldman.className} text-5xl md:text-7xl lg:text-8xl font-medium tracking-wide text-neutral-300/65 select-none transition-all duration-75 shrink-0`}
             style={{
               transform: `translateX(${-80 + progress * 280}px)`,
               opacity: 1 - progress,
