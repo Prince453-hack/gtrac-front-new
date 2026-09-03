@@ -51,6 +51,16 @@ const bottomFeatures = [
 const LockExplosion = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [progress, setProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -72,8 +82,8 @@ const LockExplosion = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const coverX = -65 - progress * 300;
-  const coverY = 70;
+  const coverX = isMobile ? -20 - progress * 110 : -65 - progress * 300;
+  const coverY = isMobile ? 18 : 70;
 
   const internalX = 0;
   const internalY = 0;
@@ -81,12 +91,13 @@ const LockExplosion = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full bg-[#0a0a0a] text-white pt-20 pb-16 px-6 sm:px-12 lg:px-20 overflow-visible"
-      style={{ minHeight: "180vh" }}
+      className="relative w-full bg-[#0a0a0a] text-white px-4 sm:px-12 lg:px-20 overflow-visible"
+      style={{ minHeight: isMobile ? "140vh" : "180vh" }}
     >
       {/* Sticky Stage Container */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center py-8 z-10 overflow-visible">
-        <div className="relative w-full max-w-5xl flex-1 flex items-center justify-center -mt-16 sm:-mt-24">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between items-center py-4 sm:py-8 z-10 overflow-visible">
+        {/* Top Graphic Area */}
+        <div className="relative w-full max-w-5xl flex-1 flex items-center justify-center pt-2 sm:pt-0 lg:-mt-24">
           {/* SVG Connector Lines to Bottom Specs (Fades in as cover moves) */}
           <svg
             className="absolute inset-0 w-full h-full pointer-events-none hidden lg:block z-15"
@@ -119,7 +130,7 @@ const LockExplosion = () => {
             })}
           </svg>
 
-          <div className="relative w-[320px] sm:w-105 md:w-125 h-100 sm:h-125 md:h-145 flex items-center justify-center">
+          <div className="relative w-44 sm:w-72 md:w-105 lg:w-125 h-44 sm:h-72 md:h-100 lg:h-145 flex items-center justify-center">
             {/* 1. Internal Assembly (Base Layer) */}
             <img
               src="/padlock/padlock-internal.png"
@@ -139,7 +150,7 @@ const LockExplosion = () => {
               draggable={false}
               className="absolute w-full h-full object-contain drop-shadow-[-20px_30px_45px_rgba(0,0,0,0.95)] transition-transform duration-75 ease-out select-none"
               style={{
-                transform: `translate(${coverX}px, ${coverY}px) scale(0.75)`,
+                transform: `translate(${coverX}px, ${coverY}px) scale(${isMobile ? 0.7 : 0.75})`,
                 zIndex: 20,
               }}
             />
@@ -147,35 +158,34 @@ const LockExplosion = () => {
         </div>
 
         {/* Bottom Section: Lock Anatomy Title & 4 Spec Items */}
-        <div className="w-full max-w-7xl mx-auto pt-6 border-t border-zinc-800/80 grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        <div className="w-full max-w-7xl mx-auto pt-3 sm:pt-6 pb-2 sm:pb-0 border-t border-zinc-800/80 grid grid-cols-1 lg:grid-cols-5 gap-2 sm:gap-4 lg:gap-8 items-start text-left">
           {/* Left Column: Lock Anatomy Title & Description */}
           <div className="lg:col-span-1">
             <h2
-              className={`${goldman.className} text-xl sm:text-2xl font-medium tracking-tight text-zinc-100 mb-2`}
+              className={`${goldman.className} text-base sm:text-xl lg:text-2xl font-medium tracking-tight text-zinc-100 mb-0.5 sm:mb-2`}
             >
               Lock Anatomy
             </h2>
             <p
-              className={`${poppins.className} text-xs text-zinc-400 leading-relaxed max-w-xs`}
+              className={`${poppins.className} text-[10px] sm:text-xs text-zinc-400 leading-tight sm:leading-relaxed max-w-xs`}
             >
               Container Padlocks are designed to keep the container door closed
-              and protect the contents from theft. They are especially important
-              for
+              and protect the contents from theft.
             </p>
           </div>
 
           {/* Right Columns: 4 Feature Blocks */}
-          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-4 gap-x-3 gap-y-2 sm:gap-6 mt-1 sm:mt-0">
             {bottomFeatures.map((item, idx) => (
               <div key={idx} className="flex flex-col items-start">
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 mb-3" />
+                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 rounded-full bg-zinc-300 mb-0.5 sm:mb-2" />
                 <h3
-                  className={`${goldman.className} font-medium text-xs sm:text-sm text-zinc-200 mb-1`}
+                  className={`${goldman.className} font-medium text-[11px] sm:text-sm text-zinc-200 mb-0.5 leading-tight`}
                 >
                   {item.title}
                 </h3>
                 <p
-                  className={`${poppins.className} text-[11px] sm:text-xs text-zinc-400 leading-snug`}
+                  className={`${poppins.className} text-[9px] sm:text-xs text-zinc-400 leading-tight sm:leading-snug`}
                 >
                   {item.desc}
                 </p>

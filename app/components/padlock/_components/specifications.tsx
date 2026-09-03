@@ -17,7 +17,7 @@ const poppins = Poppins({
 const Specifications = () => {
   return (
     <div
-      className="min-h-screen p-8 sm:p-14 lg:p-20 relative overflow-hidden"
+      className="min-h-screen p-5 sm:p-12 lg:p-20 relative overflow-hidden"
       style={{
         background: "rgba(204, 204, 204, 1)",
       }}
@@ -36,7 +36,7 @@ const Specifications = () => {
         </div>
       </div>
 
-      <div className="relative z-10 w-full flex flex-col space-y-16 md:space-y-24 items-center justify-center">
+      <div className="relative z-10 w-full flex flex-col space-y-10 sm:space-y-16 md:space-y-24 items-center justify-center">
         {/* Header Title & Description Animation */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -45,10 +45,10 @@ const Specifications = () => {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className={`${goldman.className}`}
         >
-          <h1 className="text-4xl md:text-5xl mb-5 font-medium text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl mb-3 sm:mb-5 font-medium text-center">
             Specifications
           </h1>
-          <p className="max-w-3xl text-center leading-tight text-zinc-700">
+          <p className="max-w-3xl text-center text-xs sm:text-base leading-relaxed sm:leading-tight text-zinc-700">
             Engineered with industrial-grade hardened steel for superior
             security and long-lasting durability. Corrosion-resistant
             construction ensures reliable protection for shipping containers,
@@ -69,7 +69,7 @@ const Specifications = () => {
             width={700}
             height={700}
             draggable={false}
-            className="w-auto max-w-full h-auto"
+            className="w-56 sm:w-80 md:w-auto max-w-full h-auto"
           />
         </motion.div>
 
@@ -81,7 +81,7 @@ const Specifications = () => {
           transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
           className="w-full max-w-328 border border-white/60 bg-white/30 backdrop-blur-md rounded-2xl md:rounded-[24px] p-4 sm:p-6 shadow-sm"
         >
-          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-y-6 lg:gap-y-0 divide-y sm:divide-y-0 sm:divide-x divide-zinc-400/40">
+          <div className="grid grid-cols-2 sm:grid-cols-5 lg:grid-cols-10 gap-3 sm:gap-4 lg:gap-0 sm:divide-x divide-zinc-400/40">
             {specsList.map(({ icon, subtext, title }, index) => {
               const IconComponent = icon;
               return (
@@ -95,19 +95,19 @@ const Specifications = () => {
                     delay: 0.35 + index * 0.04,
                     ease: "easeOut",
                   }}
-                  className={`${poppins.className} flex flex-col items-center justify-start text-center px-2 pt-4 sm:pt-0`}
+                  className={`${poppins.className} flex flex-col items-center justify-start text-center px-1.5 sm:px-2 py-2 sm:py-0`}
                 >
-                  <div className="w-12 h-12 rounded-full bg-linear-to-b from-[#2b2b2b] to-[#121212] flex items-center justify-center text-white shadow-md mb-2.5">
-                    <IconComponent className="w-5 h-5 stroke-[1.8]" />
+                  <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-linear-to-b from-[#2b2b2b] to-[#121212] flex items-center justify-center text-white shadow-md mb-2 sm:mb-2.5">
+                    <IconComponent className="w-4 sm:w-5 h-4 sm:h-5 stroke-[1.8]" />
                   </div>
 
-                  <div className="w-8 h-1 bg-[#E53935] mb-2.5 rounded-full" />
+                  <div className="w-6 sm:w-8 h-1 bg-[#E53935] mb-2 sm:mb-2.5 rounded-full" />
 
-                  <h3 className="font-semibold text-xs md:text-[13px] text-zinc-900 mb-2 leading-tight">
+                  <h3 className="font-semibold text-xs md:text-[13px] text-zinc-900 mb-1 sm:mb-2 leading-tight">
                     {title}
                   </h3>
 
-                  <p className="text-[11px] text-zinc-600 leading-tight whitespace-pre-line">
+                  <p className="text-[10px] sm:text-[11px] text-zinc-600 leading-tight whitespace-pre-line">
                     {subtext}
                   </p>
                 </motion.div>
