@@ -30,7 +30,10 @@ const DashcamFlow = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const centerViewport = window.innerHeight / 2;
+      const triggerY =
+        window.innerWidth < 1024
+          ? window.innerHeight * 0.65
+          : window.innerHeight / 2;
       let closestIndex = 0;
       let minDistance = Infinity;
 
@@ -38,7 +41,7 @@ const DashcamFlow = () => {
         if (!ref) return;
         const rect = ref.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
-        const distance = Math.abs(cardCenter - centerViewport);
+        const distance = Math.abs(cardCenter - triggerY);
 
         if (distance < minDistance) {
           minDistance = distance;
@@ -59,17 +62,18 @@ const DashcamFlow = () => {
     totalItems > 1 ? (activeIndex / (totalItems - 1)) * 80 + 10 : 50;
 
   return (
-    <div className="bg-white min-h-screen py-24 px-6 md:px-20 relative">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16">
-        <div className="w-full lg:w-[48%] lg:sticky lg:top-[15vh] flex flex-col justify-between h-[70vh] gap-8">
-          <div className="flex flex-col space-y-5 text-left">
+    <div className="bg-white min-h-screen py-14 sm:py-20 lg:py-24 px-4 sm:px-12 lg:px-20 relative">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-start gap-8 sm:gap-12 lg:gap-16">
+        {/* Left / Top Column: Sticky Video Display + Header */}
+        <div className="w-full lg:w-[48%] sticky top-14 sm:top-16 lg:top-[15vh] bg-white/95 lg:bg-transparent backdrop-blur-md lg:backdrop-blur-none z-30 flex flex-col justify-between h-auto lg:h-[70vh] gap-3 sm:gap-6 lg:gap-8 pt-2 pb-3 lg:py-0 border-b border-zinc-100 lg:border-none">
+          <div className="flex flex-col space-y-2 sm:space-y-4 text-left">
             <h1
-              className={`${goldmam.className} text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
+              className={`${goldmam.className} text-2xl sm:text-3xl lg:text-4xl font-base text-zinc-800 tracking-wide uppercase leading-tight`}
             >
-              Container Security <br /> Workflow
+              Container Security <br className="hidden sm:inline" /> Workflow
             </h1>
             <p
-              className={`${poppins.className} max-w-lg text-zinc-500 text-sm leading-relaxed`}
+              className={`${poppins.className} max-w-lg text-zinc-500 text-xs sm:text-sm leading-relaxed hidden sm:block`}
             >
               From secure locking to authorized unlocking, every step is
               monitored, tracked, and recorded to ensure complete cargo security
@@ -77,11 +81,11 @@ const DashcamFlow = () => {
             </p>
           </div>
 
-          {/* Sticky Video/GIF Display (Below) */}
-          <div className="relative w-full h-[42vh] p-1.5 flex items-center justify-center">
+          {/* Sticky Video/GIF Display */}
+          <div className="relative w-full h-48 sm:h-64 lg:h-[42vh] p-1.5 flex items-center justify-center">
             <FrameCorners />
 
-            <div className="w-full h-full border border-blue-500/20 p-1 bg-black/5 relative overflow-hidden flex items-center justify-center">
+            <div className="w-full h-full border border-blue-500/20 p-1 bg-black/5 relative overflow-hidden flex items-center justify-center rounded-sm">
               {DashcamContent.map((step, idx) => {
                 const isActive = activeIndex === idx;
                 const isMp4 = step.videoPath.endsWith(".mp4");
@@ -121,6 +125,7 @@ const DashcamFlow = () => {
           </div>
         </div>
 
+        {/* Center Sticky Scroll Bar (Desktop only) */}
         <div className="hidden lg:flex flex-col items-center lg:sticky lg:top-[15vh] h-[70vh] w-16 relative select-none pointer-events-none">
           <div
             className="w-1.5 h-full bg-zinc-200/80 relative rounded-full overflow-hidden"
@@ -146,13 +151,14 @@ const DashcamFlow = () => {
             }}
           >
             <div className="w-9 h-9 relative flex items-center justify-center">
-              <div className="absolute inset-0 border border-blue-500/40 bg-blue-500/15  animate-pulse" />
+              <div className="absolute inset-0 border border-blue-500/40 bg-blue-500/15 animate-pulse" />
               <div className="size-5 bg-blue-500 relative z-10" />
             </div>
           </div>
         </div>
 
-        <div className="w-full lg:w-[42%] flex flex-col space-y-[45vh] py-[25vh]">
+        {/* Right / Scrolling Content Cards */}
+        <div className="w-full lg:w-[42%] flex flex-col space-y-8 sm:space-y-12 lg:space-y-[45vh] pt-4 sm:pt-8 lg:py-[25vh] pb-12">
           {DashcamContent.map(({ title, description }, index) => {
             const isActive = activeIndex === index;
             const numStr = String(index + 1).padStart(2, "0");
@@ -163,8 +169,10 @@ const DashcamFlow = () => {
                 ref={(el) => {
                   cardRefs.current[index] = el;
                 }}
-                className={`transition-all duration-500 ease-in-out relative p-7 shadow-sm ${
-                  isActive ? "opacity-100 scale-100" : "opacity-25 scale-95"
+                className={`transition-all duration-500 ease-in-out relative p-5 sm:p-7 shadow-sm rounded-xl text-left ${
+                  isActive
+                    ? "opacity-100 scale-100"
+                    : "opacity-40 scale-98 lg:opacity-25 lg:scale-95"
                 }`}
                 style={{
                   background:
@@ -173,22 +181,22 @@ const DashcamFlow = () => {
               >
                 {isActive && <FrameCorners />}
 
-                <div className="flex flex-col space-y-6">
+                <div className="flex flex-col space-y-4 sm:space-y-6">
                   <div
-                    className={`${goldmam.className} text-5xl font-semibold text-zinc-300 tracking-wider flex items-center space-x-4`}
+                    className={`${goldmam.className} text-3xl sm:text-5xl font-semibold text-zinc-300 tracking-wider flex items-center space-x-3 sm:space-x-4`}
                   >
-                    <div className="size-5 bg-zinc-300 rounded-sm" />
+                    <div className="size-4 sm:size-5 bg-zinc-300 rounded-sm" />
                     <h1>{numStr}</h1>
                   </div>
 
-                  <div className="flex flex-col space-y-4">
+                  <div className="flex flex-col space-y-2 sm:space-y-4">
                     <h2
-                      className={`${goldmam.className} text-xl font-semibold text-zinc-800`}
+                      className={`${goldmam.className} text-lg sm:text-xl font-semibold text-zinc-800`}
                     >
                       {title}
                     </h2>
                     <p
-                      className={`${poppins.className} text-sm text-gray-500 leading-relaxed font-light`}
+                      className={`${poppins.className} text-xs sm:text-sm text-gray-500 leading-relaxed font-light`}
                     >
                       {description}
                     </p>
