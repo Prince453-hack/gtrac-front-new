@@ -31,17 +31,17 @@ const stats = [
 
 const AboutVision = () => {
   return (
-    <section className="w-full bg-[#FAF8F5] py-14 md:py-20 px-6 md:px-12 lg:px-20 border-t border-neutral-200/70">
-      <div className="max-w-340 mx-auto flex flex-col space-y-12 md:space-y-14">
+    <section className="w-full bg-[#FAF8F5] py-8 sm:py-14 md:py-20 px-4 sm:px-8 lg:px-12 border-t border-neutral-200/70">
+      <div className="max-w-340 mx-auto flex flex-col space-y-8 sm:space-y-12 md:space-y-14">
         {/* Top 2-Column Split: Title vs Paragraphs */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 items-start text-left">
           {/* Left Heading */}
-          <div className="flex flex-col space-y-3">
-            <span className="text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
+          <div className="flex flex-col space-y-2 sm:space-y-3">
+            <span className="text-[11px] sm:text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
               Vision &amp; Purpose
             </span>
             <h2
-              className={`${goldman.className} text-4xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
+              className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
             >
               Innovating GPS Tracking <br className="hidden sm:inline" />
               For India&apos;s Growth
@@ -50,7 +50,7 @@ const AboutVision = () => {
 
           {/* Right Description */}
           <div
-            className={`${poppins.className} flex flex-col space-y-4 text-neutral-600 text-sm sm:text-base font-light leading-relaxed`}
+            className={`${poppins.className} flex flex-col space-y-3 sm:space-y-4 text-neutral-600 text-xs sm:text-base font-light leading-relaxed`}
           >
             <p>
               Our vision is to always remain as the most appreciated GPS Vehicle
@@ -71,18 +71,18 @@ const AboutVision = () => {
         </div>
 
         {/* Bottom 4-Column Metrics Row */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0 pt-8 border-t border-neutral-300/80">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-0 pt-6 sm:pt-8 border-t border-neutral-300/80 text-left">
           {stats.map(({ value, label }, index) => (
             <div
               key={index}
-              className={`flex flex-col space-y-1.5 ${
+              className={`flex flex-col space-y-1 sm:space-y-1.5 ${
                 index !== stats.length - 1
                   ? "lg:border-r lg:border-neutral-300 lg:pr-8"
                   : ""
               } ${index !== 0 ? "lg:pl-8" : ""}`}
             >
               <span
-                className={`${goldman.className} text-4xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight`}
+                className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight`}
               >
                 {value}
               </span>

@@ -158,35 +158,35 @@ const AboutTimeline = () => {
   };
 
   return (
-    <section className="w-full bg-[#FAF8F5] py-20 md:py-28 border-t border-neutral-200/70 overflow-hidden">
-      <div className="max-w-340 mx-auto px-6 md:px-12 w-full">
+    <section className="w-full bg-[#FAF8F5] py-14 sm:py-20 md:py-28 border-t border-neutral-200/70 overflow-hidden">
+      <div className="max-w-340 mx-auto px-4 sm:px-8 lg:px-12 w-full">
         {/* Header with Navigation Controls */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="flex flex-col space-y-3">
-            <span className="text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 sm:mb-16">
+          <div className="flex flex-col space-y-2 sm:space-y-3 text-left">
+            <span className="text-[11px] sm:text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
               Milestones &amp; Evolution
             </span>
             <h2
-              className={`${goldman.className} text-4xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
+              className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
             >
               Our Growth <br /> Journey
             </h2>
           </div>
 
-          <div className="flex items-center space-x-3 self-end">
+          <div className="flex items-center space-x-2.5 sm:space-x-3 self-end">
             <button
               onClick={() => handleScroll("left")}
               aria-label="Scroll left"
-              className="w-12 h-12 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 active:scale-95 flex items-center justify-center text-neutral-700 transition-all shadow-xs cursor-pointer"
+              className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 active:scale-95 flex items-center justify-center text-neutral-700 transition-all shadow-xs cursor-pointer"
             >
-              <ChevronLeft className="w-5 h-5" />
+              <ChevronLeft className="w-4 sm:w-5 h-4 sm:h-5" />
             </button>
             <button
               onClick={() => handleScroll("right")}
               aria-label="Scroll right"
-              className="w-12 h-12 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 active:scale-95 flex items-center justify-center text-neutral-700 transition-all shadow-xs cursor-pointer"
+              className="w-10 sm:w-12 h-10 sm:h-12 rounded-full border border-neutral-300 bg-white hover:bg-neutral-100 active:scale-95 flex items-center justify-center text-neutral-700 transition-all shadow-xs cursor-pointer"
             >
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 sm:w-5 h-4 sm:h-5" />
             </button>
           </div>
         </div>
@@ -195,7 +195,7 @@ const AboutTimeline = () => {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-none snap-x snap-mandatory relative z-10"
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 sm:pb-8 pt-2 scrollbar-none snap-x snap-mandatory relative z-10"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {milestones.map((item, index) => {
@@ -203,23 +203,23 @@ const AboutTimeline = () => {
               return (
                 <div
                   key={index}
-                  className="min-w-70 sm:min-w-[320px] max-w-[320px] shrink-0 snap-start flex flex-col items-center group"
+                  className="min-w-65 sm:min-w-[320px] max-w-[320px] shrink-0 snap-start flex flex-col items-center group"
                 >
                   {/* Top Year & Date Pill */}
-                  <div className="flex flex-col items-center mb-5">
+                  <div className="flex flex-col items-center mb-4 sm:mb-5">
                     <span
                       className={`${goldman.className} text-sm font-semibold text-neutral-900 tracking-wider`}
                     >
                       {item.year}
                     </span>
                     <span
-                      className={`${poppins.className} text-[11px] text-neutral-500 uppercase tracking-widest font-medium`}
+                      className={`${poppins.className} text-[10px] sm:text-[11px] text-neutral-500 uppercase tracking-widest font-medium`}
                     >
                       {item.month}
                     </span>
                   </div>
 
-                  <div className="relative w-full flex items-center justify-center mb-6">
+                  <div className="relative w-full flex items-center justify-center mb-4 sm:mb-6">
                     <div
                       className={`hidden md:block absolute h-0.5 border-t-2 border-dashed border-amber-500/40 z-0 ${
                         index === 0
@@ -232,9 +232,9 @@ const AboutTimeline = () => {
 
                     {/* Node Circle */}
                     <div
-                      className={`relative w-14 h-14 rounded-full flex items-center justify-center shadow-md transition-all duration-300 z-10 overflow-hidden ${
+                      className={`relative w-12 sm:w-14 h-12 sm:h-14 rounded-full flex items-center justify-center shadow-md transition-all duration-300 z-10 overflow-hidden ${
                         item.imageSrc
-                          ? "bg-white p-2.5 border-2 border-neutral-300/80 group-hover:border-[#EA8D00]"
+                          ? "bg-white p-2 sm:p-2.5 border-2 border-neutral-300/80 group-hover:border-[#EA8D00]"
                           : item.isHighlight
                             ? "bg-[#EA8D00] text-white ring-4 ring-amber-500/20 scale-105"
                             : "bg-white text-neutral-700 border-2 border-neutral-300/80 group-hover:border-[#EA8D00] group-hover:text-[#EA8D00]"
@@ -251,25 +251,25 @@ const AboutTimeline = () => {
                           />
                         </div>
                       ) : (
-                        <Icon className="w-6 h-6 stroke-[1.8]" />
+                        <Icon className="w-5 sm:w-6 h-5 sm:h-6 stroke-[1.8]" />
                       )}
                     </div>
                   </div>
 
                   {/* Milestone Card */}
                   <div
-                    className={`w-full p-6 rounded-3xl bg-white border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-3 min-h-42.5 transition-all duration-300 ${
+                    className={`w-full p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-white border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-2.5 sm:space-y-3 min-h-38 sm:min-h-42.5 transition-all duration-300 text-left ${
                       item.isHighlight
                         ? "border-amber-300/70 bg-linear-to-b from-amber-50/30 to-white"
                         : "group-hover:border-neutral-300"
                     }`}
                   >
                     <div>
-                      <span className="text-[10px] font-mono font-medium text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/60 uppercase tracking-wide inline-block mb-2">
+                      <span className="text-[10px] font-mono font-medium text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200/60 uppercase tracking-wide inline-block mb-1.5 sm:mb-2">
                         {item.tag}
                       </span>
                       <h3
-                        className={`${goldman.className} text-base font-medium text-neutral-900 leading-snug`}
+                        className={`${goldman.className} text-sm sm:text-base font-medium text-neutral-900 leading-snug`}
                       >
                         {item.title}
                       </h3>

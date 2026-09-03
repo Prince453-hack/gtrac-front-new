@@ -28,16 +28,16 @@ const companyLogos = [
 
 const AboutPartners = () => {
   return (
-    <section className="w-full bg-white py-24 md:py-32 border-t border-neutral-200/70 flex flex-col items-center">
+    <section className="w-full bg-white py-8 sm:py-20 md:py-32 border-t border-neutral-200/70 flex flex-col items-center">
       {/* Header */}
-      <div className="max-w-3xl mx-auto px-6 text-center space-y-4 mb-16 sm:mb-20">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-3 sm:space-y-4 mb-8 sm:mb-14 md:mb-20">
         <h2
-          className={`${goldman.className} text-4xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
+          className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
         >
           Our Trusted Partner
         </h2>
         <p
-          className={`${poppins.className} text-neutral-500 text-sm sm:text-base font-light leading-relaxed max-w-xl mx-auto`}
+          className={`${poppins.className} text-neutral-500 text-xs sm:text-base font-light leading-relaxed max-w-xl mx-auto`}
         >
           Collaborating with industry leaders to deliver the best telematics and
           fleet management solutions for our clients.
@@ -50,9 +50,9 @@ const AboutPartners = () => {
           {companyLogos.map((company, index) => (
             <div
               key={index}
-              className="h-36 sm:h-44 md:h-48 flex items-center justify-center p-6 sm:p-10 bg-white hover:bg-neutral-50/70 transition-all duration-300 group"
+              className="h-28 sm:h-40 md:h-48 flex items-center justify-center p-4 sm:p-8 md:p-10 bg-white hover:bg-neutral-50/70 transition-all duration-300 group"
             >
-              <div className="relative w-32 h-14 sm:w-40 sm:h-16 md:w-48 md:h-20 flex items-center justify-center">
+              <div className="relative w-28 h-12 sm:w-36 sm:h-14 md:w-48 md:h-20 flex items-center justify-center">
                 <Image
                   src={company.src}
                   alt={company.name}

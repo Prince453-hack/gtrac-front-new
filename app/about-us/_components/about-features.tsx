@@ -36,23 +36,23 @@ const featureCards = [
 
 const AboutFeatures = () => {
   return (
-    <section className="w-full bg-white flex flex-col pt-16 md:pt-20 pb-20 md:pb-24">
-      <div className="max-w-340 mx-auto px-6 md:px-12 w-full">
+    <section className="w-full bg-white flex flex-col pt-8 sm:pt-14 md:pt-20 pb-8 sm:pb-16 md:pb-24">
+      <div className="max-w-340 mx-auto px-4 sm:px-8 lg:px-12 w-full">
         {/* Title vs Paragraph */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-12">
-          <div className="flex flex-col space-y-3">
-            <span className="text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-16 items-start mb-8 sm:mb-12 text-left">
+          <div className="flex flex-col space-y-2 sm:space-y-3">
+            <span className="text-[11px] sm:text-xs font-mono font-medium tracking-widest text-blue-600 uppercase">
               Core Capabilities
             </span>
             <h2
-              className={`${goldman.className} text-4xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
+              className={`${goldman.className} text-3xl sm:text-5xl lg:text-6xl font-medium text-neutral-900 tracking-tight leading-tight`}
             >
               What Sets <br /> Us Apart
             </h2>
           </div>
 
           <div
-            className={`${poppins.className} flex flex-col space-y-4 text-neutral-600 text-sm sm:text-base font-light leading-relaxed`}
+            className={`${poppins.className} flex flex-col space-y-3 sm:space-y-4 text-neutral-600 text-xs sm:text-base font-light leading-relaxed`}
           >
             <p>
               Our G-TRAC GPS based vehicle tracking solutions is presently
@@ -75,20 +75,20 @@ const AboutFeatures = () => {
         </div>
 
         {/* 3 Core Feature Cards (Compact Height) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 w-full">
           {featureCards.map(
             ({ icon: Icon, title, description, iconBg }, index) => (
               <div
                 key={index}
-                className="p-6 sm:p-7 md:py-8 rounded-3xl bg-neutral-50/90 border border-neutral-200/80 shadow-xs flex flex-col items-center text-center space-y-3.5 w-full"
+                className="p-5 sm:p-7 md:py-8 rounded-3xl bg-neutral-50/90 border border-neutral-200/80 shadow-xs flex flex-col items-center text-center space-y-3 sm:space-y-3.5 w-full"
               >
                 <div
-                  className={`w-13 h-13 rounded-xl flex items-center justify-center ${iconBg}`}
+                  className={`w-11 sm:w-13 h-11 sm:h-13 rounded-xl flex items-center justify-center ${iconBg}`}
                 >
-                  <Icon className="w-6.5 h-6.5 stroke-[1.8]" />
+                  <Icon className="w-5 sm:w-6.5 h-5 sm:h-6.5 stroke-[1.8]" />
                 </div>
                 <h3
-                  className={`${goldman.className} text-lg sm:text-xl font-medium text-neutral-900`}
+                  className={`${goldman.className} text-base sm:text-xl font-medium text-neutral-900`}
                 >
                   {title}
                 </h3>
