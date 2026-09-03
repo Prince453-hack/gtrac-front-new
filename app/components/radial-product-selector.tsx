@@ -110,8 +110,19 @@ export const RadialProductSelector = ({
     });
   };
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const fanAngles = [270, 225, 180, 135];
-  const radius = 135; // Compact spacing between products
+  const radius = isMobile ? 105 : 135; // Responsive radius
 
   return (
     <AnimatePresence>
@@ -122,7 +133,7 @@ export const RadialProductSelector = ({
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3 }}
           ref={containerRef}
-          className="fixed bottom-16 right-6 sm:bottom-32 sm:right-10 z-50 select-none"
+          className="fixed bottom-20 right-5 sm:bottom-32 sm:right-10 z-50 select-none"
         >
           <div className="relative flex items-center justify-center">
             {/* Fanned Out Product Cards (Only other 4 products) */}
@@ -135,7 +146,7 @@ export const RadialProductSelector = ({
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     onClick={() => setIsOpen(false)}
-                    className="fixed inset-0 bg-black/20 backdrop-blur-xs -z-10"
+                    className="fixed inset-0 bg-black/30 backdrop-blur-xs -z-10"
                   />
 
                   {/* 4 Radial Fan Cards */}
@@ -181,12 +192,12 @@ export const RadialProductSelector = ({
                         style={{
                           left: "50%",
                           top: "50%",
-                          marginLeft: "-32px",
-                          marginTop: "-42px",
+                          marginLeft: isMobile ? "-28px" : "-36px",
+                          marginTop: isMobile ? "-36px" : "-48px",
                         }}
                       >
-                        <div className="group w-16 h-21 sm:w-18 sm:h-24 rounded-2xl bg-white p-2 shadow-xl border border-zinc-100 group-hover:border-slate-700 transition-all duration-200 flex flex-col items-center justify-center relative overflow-hidden">
-                          <div className="relative w-12 h-14 sm:w-14 sm:h-16 flex items-center justify-center transition-opacity duration-200 group-hover:opacity-15">
+                        <div className="group w-14 h-18 sm:w-18 sm:h-24 rounded-2xl bg-white p-1.5 sm:p-2 shadow-xl border border-zinc-100 group-hover:border-slate-700 transition-all duration-200 flex flex-col items-center justify-center relative overflow-hidden">
+                          <div className="relative w-10 h-12 sm:w-14 sm:h-16 flex items-center justify-center transition-opacity duration-200 group-hover:opacity-15">
                             <Image
                               src={product.image}
                               alt={product.name}
@@ -197,9 +208,9 @@ export const RadialProductSelector = ({
                             />
                           </div>
 
-                          <div className="absolute inset-0 flex items-center justify-center p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                          <div className="absolute inset-0 flex items-center justify-center p-1 sm:p-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
                             <span
-                              className={`${poppins.className} text-[10px] sm:text-[11px] font-bold text-neutral-900 text-center leading-tight tracking-tight uppercase select-none`}
+                              className={`${poppins.className} text-[9px] sm:text-[11px] font-bold text-neutral-900 text-center leading-tight tracking-tight uppercase select-none`}
                             >
                               {product.name}
                             </span>
@@ -212,15 +223,16 @@ export const RadialProductSelector = ({
               )}
             </AnimatePresence>
 
-            {/* Central Circular Trigger Button (High contrast with ambient halo for dark & light backgrounds) */}
+            {/* Central Circular Trigger Button */}
             <div className="relative group/btn">
-              {/* Subtle ambient halo to pop on pitch-black and dark sections */}
+              {/* Subtle ambient halo */}
               <div className="absolute -inset-1 rounded-full bg-white/20 blur-md pointer-events-none transition-all duration-300" />
 
-              <div className="p-1 rounded-full border-2 border-dashed border-white/70 bg-black/50 backdrop-blur-md shadow-2xl group-hover/btn:border-white transition-colors relative z-10">
+              <div className="p-0.5 sm:p-1 rounded-full border-2 border-dashed border-white/70 bg-black/50 backdrop-blur-md shadow-2xl group-hover/btn:border-white transition-colors relative z-10">
                 <button
                   onClick={() => setIsOpen(!isOpen)}
-                  className="w-18 h-18 sm:w-20 sm:h-20 rounded-full bg-linear-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white shadow-2xl flex flex-col items-center justify-center cursor-pointer border-2 border-white/80 hover:border-white hover:scale-102 active:scale-95 transition-all duration-200 relative z-50 overflow-hidden"
+                  aria-label="All Products"
+                  className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-linear-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white shadow-2xl flex flex-col items-center justify-center cursor-pointer border-2 border-white/80 hover:border-white hover:scale-102 active:scale-95 transition-all duration-200 relative z-50 overflow-hidden"
                 >
                   {/* Glassmorphic Ambient Highlight */}
                   <div className="absolute inset-0 bg-radial from-white/15 to-transparent opacity-60 pointer-events-none" />
@@ -228,9 +240,9 @@ export const RadialProductSelector = ({
                   {/* Icon / Action state */}
                   {isOpen ? (
                     <div className="relative z-10 flex flex-col items-center">
-                      <X className="w-5 h-5 text-white drop-shadow-md" />
+                      <X className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-md" />
                       <span
-                        className={`${poppins.className} text-[9px] font-bold text-white/90 tracking-wider uppercase mt-0.5`}
+                        className={`${poppins.className} text-[8px] sm:text-[9px] font-bold text-white/90 tracking-wider uppercase mt-0.5`}
                       >
                         Close
                       </span>
@@ -238,7 +250,7 @@ export const RadialProductSelector = ({
                   ) : (
                     <div className="relative z-10 flex flex-col items-center text-center px-1">
                       <span
-                        className={`${goldman.className} text-[11px] sm:text-xs font-bold text-white tracking-tight leading-tight block drop-shadow-md`}
+                        className={`${goldman.className} text-[9px] sm:text-xs font-bold text-white tracking-tight leading-tight block drop-shadow-md`}
                       >
                         All <br /> Product
                       </span>

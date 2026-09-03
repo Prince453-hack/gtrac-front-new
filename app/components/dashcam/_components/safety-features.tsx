@@ -264,6 +264,133 @@ const SteeringWheel = ({ rotation }: SteeringWheelProps) => (
   </div>
 );
 
+// --- Mobile Safety Features Sub-component ---
+
+const MobileSafetyFeatures = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const current = safetyFeaturesData[activeTab];
+
+  return (
+    <div className="bg-[#1D2128] text-white py-14 px-5 relative overflow-hidden">
+      {/* Background Ambient Glows */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-60 h-60 bg-cyan-500/10 rounded-full blur-2xl pointer-events-none" />
+
+      {/* Header */}
+      <div className="relative z-10 flex flex-col items-center text-center mb-8">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[11px] text-blue-400 font-medium tracking-wider uppercase mb-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <span>AI Driver Monitoring</span>
+        </div>
+        <h2
+          className={`${goldman.className} text-3xl font-bold tracking-wide uppercase text-white mb-2`}
+        >
+          Safety Features
+        </h2>
+        <p
+          className={`${outfit.className} text-xs text-zinc-400 max-w-xs font-light leading-relaxed`}
+        >
+          Intelligent real-time detection designed to prevent road hazards and
+          keep fleets secure.
+        </p>
+      </div>
+
+      {/* Interactive Tabs */}
+      <div className="relative z-10 flex space-x-2 overflow-x-auto pb-3 mb-5 scrollbar-none no-scrollbar">
+        {safetyFeaturesData.map((feature, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActiveTab(idx)}
+            className={`shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-300 ${
+              activeTab === idx
+                ? "bg-blue-600 text-white shadow-lg shadow-blue-500/30 border border-blue-400"
+                : "bg-white/5 text-zinc-400 border border-white/10 hover:bg-white/10"
+            }`}
+          >
+            {feature.title.replace(" Detection", "")}
+          </button>
+        ))}
+      </div>
+
+      {/* Active Feature Card */}
+      <div className="relative z-10 rounded-2xl bg-linear-to-b from-white/10 to-white/5 border border-white/15 p-4 backdrop-blur-xl shadow-2xl transition-all duration-300">
+        {/* Step Indicator */}
+        <div className="flex items-center justify-between mb-3">
+          <span
+            className={`${goldman.className} text-[11px] tracking-widest text-blue-400 uppercase font-bold`}
+          >
+            Feature 0{activeTab + 1} / 0{safetyFeaturesData.length}
+          </span>
+          <div className="flex space-x-1.5">
+            {safetyFeaturesData.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveTab(i)}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  activeTab === i ? "w-5 bg-blue-500" : "w-1.5 bg-white/30"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Feature Image Preview */}
+        <div className="relative w-full h-48 rounded-xl overflow-hidden mb-4 bg-black/40 border border-white/10 shadow-inner">
+          <Image
+            src={current.imagePath}
+            alt={current.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+
+        {/* Feature Content */}
+        <div className="text-left space-y-1.5">
+          <h3
+            className={`${goldman.className} text-lg font-bold text-white tracking-wide`}
+          >
+            {current.title}
+          </h3>
+          <p
+            className={`${outfit.className} text-xs text-zinc-300 font-light leading-relaxed`}
+          >
+            {current.description}
+          </p>
+        </div>
+
+        {/* Prev / Next Controls */}
+        <div className="flex items-center justify-between mt-5 pt-3 border-t border-white/10">
+          <button
+            onClick={() =>
+              setActiveTab((prev) =>
+                prev > 0 ? prev - 1 : safetyFeaturesData.length - 1,
+              )
+            }
+            className="px-3 py-1 rounded-lg bg-white/10 text-xs text-white hover:bg-white/20 transition-colors"
+          >
+            ← Prev
+          </button>
+          <span className="text-[11px] text-zinc-400">
+            {activeTab + 1} of {safetyFeaturesData.length}
+          </span>
+          <button
+            onClick={() =>
+              setActiveTab((prev) =>
+                prev < safetyFeaturesData.length - 1 ? prev + 1 : 0,
+              )
+            }
+            className="px-3 py-1 rounded-lg bg-blue-600 text-xs text-white hover:bg-blue-500 transition-colors"
+          >
+            Next →
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 // --- Main Component ---
 
 const SafetyFeatures = () => {
@@ -363,71 +490,82 @@ const SafetyFeatures = () => {
   const activeFeature = safetyFeaturesData[activeIndex];
 
   return (
-    <div ref={containerRef} className="relative h-[480vh] bg-[#1D2128]">
-      <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <Image
-          src="/dashcam/dc-background.png"
-          alt="Safety Features Back"
-          fill
-          priority
-          draggable={false}
-          className="object-cover pointer-events-none select-none"
-          style={{ opacity: bgOpacity }}
-        />
+    <>
+      {/* Mobile-dedicated experience (< md) */}
+      <div className="block md:hidden">
+        <MobileSafetyFeatures />
+      </div>
 
-        {/* Hero Section */}
-        <SafetyHero
-          goldmanFont={goldman.className}
-          textOpacity={textOpacity}
-          dashcamOpacity={dashcamOpacity}
-          leftTranslateX={leftTranslateX}
-          rightTranslateX={rightTranslateX}
-          imageTranslateX={imageTranslateX}
-          imageTranslateY={imageTranslateY}
-          imageScale={imageScale}
-          imageRotate={imageRotate}
-        />
+      {/* Desktop original interactive 480vh experience (md+) */}
+      <div
+        ref={containerRef}
+        className="hidden md:block relative h-[480vh] bg-[#1D2128]"
+      >
+        <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
+          {/* Background Image */}
+          <Image
+            src="/dashcam/dc-background.png"
+            alt="Safety Features Back"
+            fill
+            priority
+            draggable={false}
+            className="object-cover pointer-events-none select-none"
+            style={{ opacity: bgOpacity }}
+          />
 
-        {/* Overlay Section */}
-        <div
-          className="absolute top-0 left-0 z-20 flex flex-col md:flex-row items-center justify-between w-full h-screen bg-white text-black transition-all duration-75 px-6 md:px-24 py-12 md:py-0 overflow-hidden"
-          style={{
-            opacity: overlayBgOpacity,
-            visibility: overlayBgOpacity > 0 ? "visible" : "hidden",
-          }}
-        >
-          <FeatureDetails
-            title={activeFeature.title}
-            description={activeFeature.description}
+          {/* Hero Section */}
+          <SafetyHero
             goldmanFont={goldman.className}
-            outfitFont={outfit.className}
-            contentProgress={contentProgress}
+            textOpacity={textOpacity}
+            dashcamOpacity={dashcamOpacity}
+            leftTranslateX={leftTranslateX}
+            rightTranslateX={rightTranslateX}
+            imageTranslateX={imageTranslateX}
+            imageTranslateY={imageTranslateY}
+            imageScale={imageScale}
+            imageRotate={imageRotate}
           />
 
-          {/* Right Graphic Background */}
+          {/* Overlay Section */}
           <div
-            className="absolute right-[-45vh] md:right-[-35vh] top-1/2 w-[145vh] h-[140vh] rounded-full bg-[#252525] transition-transform duration-500 z-10"
-            style={{ transform: `translateY(-50%)` }}
-          />
+            className="absolute top-0 left-0 z-20 flex flex-col md:flex-row items-center justify-between w-full h-screen bg-white text-black transition-all duration-75 px-6 md:px-24 py-12 md:py-0 overflow-hidden"
+            style={{
+              opacity: overlayBgOpacity,
+              visibility: overlayBgOpacity > 0 ? "visible" : "hidden",
+            }}
+          >
+            <FeatureDetails
+              title={activeFeature.title}
+              description={activeFeature.description}
+              goldmanFont={goldman.className}
+              outfitFont={outfit.className}
+              contentProgress={contentProgress}
+            />
 
-          <FeatureCarousel
-            features={safetyFeaturesData}
-            activeIndex={activeIndex}
-          />
+            {/* Right Graphic Background */}
+            <div
+              className="absolute right-[-45vh] md:right-[-35vh] top-1/2 w-[145vh] h-[140vh] rounded-full bg-[#252525] transition-transform duration-500 z-10"
+              style={{ transform: `translateY(-50%)` }}
+            />
 
-          <ScrollControls
-            contentProgress={contentProgress}
-            activeIndex={activeIndex}
-            totalItems={safetyFeaturesData.length}
-            onUp={handleUp}
-            onDown={handleDown}
-          />
+            <FeatureCarousel
+              features={safetyFeaturesData}
+              activeIndex={activeIndex}
+            />
 
-          <SteeringWheel rotation={wheelRotation} />
+            <ScrollControls
+              contentProgress={contentProgress}
+              activeIndex={activeIndex}
+              totalItems={safetyFeaturesData.length}
+              onUp={handleUp}
+              onDown={handleDown}
+            />
+
+            <SteeringWheel rotation={wheelRotation} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
