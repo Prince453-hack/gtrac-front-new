@@ -22,8 +22,8 @@ export const products = [
     description: "Secure it. Monitor it. Protect it.",
     titleWidth: "80vw",
     titleHeight: "15vh",
-    activeImageWidth: "280",
-    activeImageHeight: "300",
+    activeImageWidth: "320",
+    activeImageHeight: "450",
     detailHeading: "Security shouldn't leave you in the dark.",
     detailDesc:
       "Standard padlocks offer zero visibility. Our Smart Padlock sends real-time GPS tracking and instant alerts, ensuring you know exactly who opened it, when, and where.",
@@ -34,13 +34,13 @@ export const products = [
     ],
   },
   {
-    name: "OBD",
+    name: "OBD GPS",
     image: "/obd.png",
     description: "Plug it. Monitor it. Optimize it.",
     titleWidth: "80vw",
     titleHeight: "25vh",
-    activeImageWidth: "380",
-    activeImageHeight: "450",
+    activeImageWidth: "460",
+    activeImageHeight: "540",
     detailHeading: "Know your vehicle inside and out.",
     detailDesc:
       "Plug in and immediately start tracking fuel efficiency, engine health diagnostics, and aggressive driving behaviors in real-time. Optimize your fleet operations seamlessly.",

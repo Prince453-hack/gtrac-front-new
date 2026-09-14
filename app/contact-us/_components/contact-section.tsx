@@ -104,6 +104,7 @@ const solutionsList = [
   "GPS",
   "CAN OBD based GPS",
   "Breath Analyser (Alcohol Sensor)",
+  "Other",
 ];
 
 const ContactSection = () => {
@@ -112,6 +113,7 @@ const ContactSection = () => {
     phone: "",
     email: "",
     solution: "",
+    otherSolution: "",
     country: "India",
     captchaInput: "",
   });
@@ -172,6 +174,16 @@ const ContactSection = () => {
       return;
     }
 
+    if (!formData.solution) {
+      setErrorMessage("Please select a solution.");
+      return;
+    }
+
+    if (formData.solution === "Other" && !formData.otherSolution.trim()) {
+      setErrorMessage("Please specify the solution you are looking for.");
+      return;
+    }
+
     // Validate Captcha
     if (formData.captchaInput.trim() !== captcha) {
       setCaptchaError("Captcha is incorrect.");
@@ -181,11 +193,18 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
+      const solutionValue =
+        formData.solution === "Other"
+          ? formData.otherSolution.trim()
+            ? `Other (${formData.otherSolution.trim()})`
+            : "Other"
+          : formData.solution;
+
       const data = new FormData();
       data.append("name", formData.name);
       data.append("phone", formData.phone);
       data.append("email", formData.email);
-      data.append("solution", formData.solution);
+      data.append("solution", solutionValue);
       data.append("country", formData.country);
       data.append(
         "link",
@@ -206,6 +225,7 @@ const ContactSection = () => {
         phone: "",
         email: "",
         solution: "",
+        otherSolution: "",
         country: "India",
         captchaInput: "",
       });
@@ -249,7 +269,7 @@ const ContactSection = () => {
                   href="tel:+911146254625"
                   className={`${poppins.className} text-sm sm:text-base font-medium text-neutral-800 hover:text-[#FF5520] transition-colors`}
                 >
-                  +91 11 46254625 / 4915 5050
+                  +91 11 45282210
                 </a>
               </div>
 
@@ -499,6 +519,37 @@ const ContactSection = () => {
                   </div>
                 </div>
 
+                {/* Other Solution Input (Visible when 'Other' is selected) */}
+                {formData.solution === "Other" && (
+                  <div className="flex flex-col space-y-1.5 sm:space-y-2 animate-in fade-in-50 duration-200">
+                    <Label
+                      htmlFor="otherSolution"
+                      className={poppins.className}
+                    >
+                      Specify Solution <span className="text-red-500">*</span>
+                    </Label>
+                    <div className="relative flex items-center">
+                      <Layers className="w-4 h-4 text-neutral-400 absolute left-3.5 pointer-events-none" />
+                      <Input
+                        id="otherSolution"
+                        name="otherSolution"
+                        type="text"
+                        required
+                        maxLength={100}
+                        placeholder="Enter your required solution"
+                        value={formData.otherSolution}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            otherSolution: e.target.value,
+                          })
+                        }
+                        className={`${poppins.className} pl-10`}
+                      />
+                    </div>
+                  </div>
+                )}
+
                 {/* Captcha Box & Captcha Input */}
                 <div className="pt-2 flex flex-col space-y-2">
                   <div className="flex items-center space-x-3">
@@ -533,7 +584,7 @@ const ContactSection = () => {
                         }}
                         className={`${poppins.className} ${
                           captchaError
-                            ? "border-red-500 focus:border-red-600 focus:ring-red-100"
+                            ? "border-red-500 focus:ring-red-100"
                             : ""
                         }`}
                       />
@@ -552,12 +603,12 @@ const ContactSection = () => {
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-3">
+                <div className="pt-3 flex justify-end">
                   <Button
                     type="submit"
                     size="default"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto px-8"
+                    className={`${poppins.className} w-full sm:w-auto px-8`}
                   >
                     {isSubmitting ? "Submitting..." : "Submit Details"}
                   </Button>

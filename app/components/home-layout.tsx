@@ -68,7 +68,6 @@ export default function HomeLayout() {
 
   return (
     <>
-      {/* Fixed Radial Product Fan-Out Selector (Accessible on every section on top right) */}
       <RadialProductSelector
         mainProduct={mainProduct}
         setMainProduct={setMainProduct}
@@ -95,7 +94,7 @@ export default function HomeLayout() {
         {mainProduct.name === "E-lock" && <ElockContent />}
         {mainProduct.name === "Adas (DMS)" && <DashcamContent />}
         {mainProduct.name === "Padlock" && <PadlockContent />}
-        {mainProduct.name === "OBD" && <ObdContent />}
+        {mainProduct.name === "OBD GPS" && <ObdContent />}
         {(mainProduct.name === "Breath Analyze" ||
           mainProduct.name === "Breath Analyzer" ||
           mainProduct.name === "Breathalyzer") && <BreathAnalyzerContent />}
