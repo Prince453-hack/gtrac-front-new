@@ -194,7 +194,7 @@ export const productFaqMap: Record<string, ProductFaqConfig> = {
     imageAlt: "Smart Padlock Security",
     faqs: PadlockFaq,
   },
-  OBD: {
+  "OBD GPS": {
     image: "/faq/obd-faq.png",
     imageAlt: "OBD Telematics Gateway",
     faqs: ObdFaq,
