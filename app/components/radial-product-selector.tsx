@@ -133,7 +133,7 @@ export const RadialProductSelector = ({
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3 }}
           ref={containerRef}
-          className="fixed bottom-20 right-5 sm:bottom-32 sm:right-10 z-50 select-none"
+          className="fixed bottom-20 right-5 sm:bottom-32 sm:right-10 z-[100] select-none"
         >
           <div className="relative flex items-center justify-center">
             {/* Fanned Out Product Cards (Only other 4 products) */}
@@ -225,7 +225,6 @@ export const RadialProductSelector = ({
 
             {/* Central Circular Trigger Button */}
             <div className="relative group/btn">
-              {/* Subtle ambient halo */}
               <div className="absolute -inset-1 rounded-full bg-white/20 blur-md pointer-events-none transition-all duration-300" />
 
               <div className="p-0.5 sm:p-1 rounded-full border-2 border-dashed border-white/70 bg-black/50 backdrop-blur-md shadow-2xl group-hover/btn:border-white transition-colors relative z-10">
@@ -234,10 +233,8 @@ export const RadialProductSelector = ({
                   aria-label="All Products"
                   className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-linear-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white shadow-2xl flex flex-col items-center justify-center cursor-pointer border-2 border-white/80 hover:border-white hover:scale-102 active:scale-95 transition-all duration-200 relative z-50 overflow-hidden"
                 >
-                  {/* Glassmorphic Ambient Highlight */}
                   <div className="absolute inset-0 bg-radial from-white/15 to-transparent opacity-60 pointer-events-none" />
 
-                  {/* Icon / Action state */}
                   {isOpen ? (
                     <div className="relative z-10 flex flex-col items-center">
                       <X className="w-4 h-4 sm:w-5 sm:h-5 text-white drop-shadow-md" />

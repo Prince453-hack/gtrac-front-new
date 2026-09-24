@@ -122,9 +122,7 @@ const Products = ({
           <h1
             className={`${goldman.className} text-2xl font-semibold tracking-wider text-white/90 uppercase leading-tight mb-1.5 text-center`}
           >
-            {mainProduct.name === "Breathalyzer"
-              ? "BREATH ALYZER"
-              : mainProduct.name}
+            {mainProduct.name}
           </h1>
           <p
             className={`${poppins.className} text-[9px] text-zinc-500 backdrop-blur-3xl border border-gray-500/60 bg-white/15 px-3 py-1 rounded-full font-medium tracking-widest uppercase text-center`}
@@ -310,22 +308,20 @@ const Products = ({
         </div>
       </div>
       <div
-        className={`fixed top-[46%] ${isWideProduct ? "left-[54%]" : "left-[50%]"} z-10 flex flex-col items-center justify-center text-center pointer-events-none max-w-xl px-4 transition-all duration-300`}
+        className={`fixed top-[46%] ${isWideProduct ? "left-[54%]" : "left-[50%]"} z-10 flex flex-col items-center justify-center text-center pointer-events-none max-w-xl lg:max-w-2xl px-4 transition-all duration-300`}
         style={{
           opacity: Math.max(1 - progress * 2.2, 0),
           transform: `translateY(calc(-50% - ${progress * 25}px))`,
         }}
       >
         <h1
-          className={`${goldman.className} text-4xl sm:text-6xl md:text-7xl lg:text-[5.7rem] font-semibold tracking-wider text-white/90 uppercase leading-none mb-6 text-center`}
+          className={`${goldman.className} ${
+            mainProduct.name === "Breathalyzer"
+              ? "text-3xl sm:text-5xl md:text-6xl lg:text-[4.2rem] whitespace-nowrap"
+              : "text-4xl sm:text-6xl md:text-7xl lg:text-[5.7rem]"
+          } font-semibold tracking-wider text-white/90 uppercase leading-none mb-6 text-center`}
         >
-          {mainProduct.name === "Breathalyzer" ? (
-            <>
-              BREATH <br /> ALYZER
-            </>
-          ) : (
-            mainProduct.name
-          )}
+          {mainProduct.name}
         </h1>
         <p
           className={`${poppins.className} bg-linear-to-r text-xs sm:text-sm text-zinc-500 backdrop-blur-3xl border border-gray-500/60 bg-white/15 p-2.5 rounded-full font-medium tracking-[0.2em] uppercase text-center`}
