@@ -23,7 +23,6 @@ const liveAlerts = [
     color: "bg-[#fca5a5]",
     category: "Safety",
   },
-  { label: "Tired", count: 17, color: "bg-[#c4b5fd]", category: "DMS" },
   {
     label: "Main Power Removed",
     count: 16,
@@ -37,23 +36,10 @@ const liveAlerts = [
     category: "Power",
   },
   {
-    label: "Fasten Seat Belt",
-    count: 11,
-    color: "bg-[#fda4af]",
-    category: "Safety",
-  },
-  { label: "Phone Call", count: 7, color: "bg-[#93c5fd]", category: "DMS" },
-  {
     label: "Elock Tampered",
     count: 5,
     color: "bg-[#c084fc]",
     category: "Security",
-  },
-  {
-    label: "Covering Camera",
-    count: 4,
-    color: "bg-[#fed7aa]",
-    category: "Camera",
   },
   { label: "Smoke", count: 4, color: "bg-[#f472b6]", category: "Cabin" },
   {

@@ -133,7 +133,7 @@ export const RadialProductSelector = ({
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
           transition={{ duration: 0.3 }}
           ref={containerRef}
-          className="fixed bottom-20 right-5 sm:bottom-32 sm:right-10 z-[100] select-none"
+          className="fixed bottom-20 right-5 sm:bottom-32 sm:right-10 z-100 select-none"
         >
           <div className="relative flex items-center justify-center">
             {/* Fanned Out Product Cards (Only other 4 products) */}
